@@ -2,6 +2,10 @@
 name = "answer"
 version = "0.0.0"
 edition = "2021"
+authors = ["Felipe S. S. Schneider <schneider.felipe.5@gmail.com>"]
+description = "A command-line application for answering any question right from your terminal"
+homepage = "https://github.com/schneiderfelipe/answer"
+license = "MIT"
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
