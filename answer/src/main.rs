@@ -216,3 +216,15 @@ const fn is_user(role: &Role) -> bool {
         Role::System | Role::Assistant => false,
     }
 }
+
+#[cfg(test)]
+mod tests {
+    use clap::CommandFactory;
+
+    use super::*;
+
+    #[test]
+    fn verify_cli() {
+        Cli::command().debug_assert();
+    }
+}
