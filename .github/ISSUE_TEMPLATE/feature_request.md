@@ -8,8 +8,16 @@ assignees: ""
 
 **Please complete the following tasks**
 
-- [ ] I have searched the [discussions](https://github.com/schneiderfelipe/answer/discussions)
-- [ ] I have searched the [open](https://github.com/schneiderfelipe/answer/issues) and [closed](https://github.com/schneiderfelipe/answer/issues?q=is%3Aissue+is%3Aclosed) issues
+- [ ] I have searched
+      the documentation and help resources before reporting.
+- [ ] I have searched
+      the [discussions](https://github.com/schneiderfelipe/answer/discussions)
+      to avoid duplicates.
+- [ ] I have searched
+      the [open](https://github.com/schneiderfelipe/answer/issues)
+      and [closed](https://github.com/schneiderfelipe/answer/issues?q=is%3Aissue+is%3Aclosed)
+      issues
+      to avoid duplicates.
 
 **Is your feature request related to a problem? Please describe.**
 A clear and concise description of what the problem is. Ex. I'm always frustrated when [...]
