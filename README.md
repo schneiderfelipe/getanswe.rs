@@ -1,3 +1,3 @@
 # answer
 
-A command-line application for answering *any* question right from your terminal.
+A command-line application for answering _any_ question right from your terminal.
