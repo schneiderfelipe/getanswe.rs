@@ -11,37 +11,19 @@
 
 use std::{
     env,
-    ffi::OsStr,
     fs::File,
     io::{self, Read, Write},
-    path::Path,
 };
 
-use anyhow::{ensure, Context};
 use async_openai::{
+    error::OpenAIError,
     types::{ChatCompletionRequestMessage, CreateChatCompletionRequestArgs, Role},
     Client,
 };
 use clap::Parser;
 use futures::StreamExt;
 use serde::{Deserialize, Serialize};
-
-/// A command-line application for answering any question right from your terminal.
-///
-/// It receives a user message in plain text from the standard input
-/// and returns an assistant message in plain text to the standard output.
-#[derive(Debug, Parser)]
-#[command(author, version, about)]
-#[command(propagate_version = true)]
-struct Cli {
-    /// Path to a conversation YAML file.
-    #[arg(value_parser = parse_conversation)]
-    conversation: Option<Conversation>,
-
-    /// Verbosity options.
-    #[clap(flatten)]
-    verbosity: clap_verbosity_flag::Verbosity,
-}
+use thiserror::Error;
 
 /// The context of a conversation.
 ///
@@ -118,6 +100,17 @@ impl From<Message> for ChatCompletionRequestMessage {
 #[derive(Debug, Default, Serialize, Deserialize)]
 struct Bot {}
 
+/// An error that came from [`Bot`].
+#[derive(Debug, Error)]
+enum BotError {
+    #[error("could not obtain environment variable: {0}")]
+    Var(#[from] env::VarError),
+    #[error("could not exchange data with OpenAI: {0}")]
+    OpenAI(#[from] OpenAIError),
+    #[error("could not perform an input or output operation: {0}")]
+    Io(#[from] io::Error),
+}
+
 impl Bot {
     /// Reply, in the context of a [`Conversation`], to the given [`Write`]r.
     #[inline]
@@ -125,7 +118,7 @@ impl Bot {
         &self,
         conversation: &Conversation,
         mut writer: W,
-    ) -> anyhow::Result<()>
+    ) -> Result<(), BotError>
     where
         W: Write,
     {
@@ -159,6 +152,40 @@ impl Bot {
     }
 }
 
+/// A command-line application for answering any question right from your terminal.
+///
+/// It receives a user message in plain text from the standard input
+/// and returns an assistant message in plain text to the standard output.
+#[derive(Debug, Parser)]
+#[command(author, version, about)]
+#[command(propagate_version = true)]
+struct Cli {
+    /// Path to a conversation YAML file.
+    #[arg(value_parser = parse_conversation)]
+    conversation: Option<Conversation>,
+
+    /// Verbosity options.
+    #[clap(flatten)]
+    verbosity: clap_verbosity_flag::Verbosity,
+}
+
+/// An error that came from [`Cli`].
+#[derive(Debug, Error)]
+enum CliError {
+    #[error("could not perform a serialization or deserialization operation: {0}")]
+    Yaml(#[from] serde_yaml::Error),
+    #[error("could not perform an input or output operation: {0}")]
+    Io(#[from] io::Error),
+}
+
+/// Get a [`Conversation`] from a file [`Path`] by parsing.
+#[inline]
+fn parse_conversation(path: &str) -> Result<Conversation, CliError> {
+    let file = File::open(path)?;
+    let conversation = Conversation::from_reader(file)?;
+    Ok(conversation)
+}
+
 /// Our beloved main function.
 #[tokio::main(flavor = "current_thread")]
 async fn main() -> anyhow::Result<()> {
@@ -183,29 +210,6 @@ async fn main() -> anyhow::Result<()> {
         .reply_to_writer(&conversation, io::stdout().lock())
         .await?;
     Ok(())
-}
-
-/// Get a [`Conversation`] from a file [`Path`] by parsing.
-#[inline]
-fn parse_conversation(path: &str) -> anyhow::Result<Conversation> {
-    let path = Path::new(path);
-    ensure!(
-        path.extension().and_then(OsStr::to_str) == Some("yml"),
-        "{path} should end with .yml",
-        path = path.display()
-    );
-    ensure!(
-        path.try_exists()?,
-        "{path} does not exist",
-        path = path.display()
-    );
-
-    let file = File::open(path)
-        .with_context(|| format!("{path} could not be open", path = path.display()))?;
-    let conversation = Conversation::from_reader(file)
-        .with_context(|| format!("{path} could not be parsed", path = path.display()))?;
-
-    Ok(conversation)
 }
 
 /// Determine whether a [`Role`] corresponds to a user.
