@@ -1,4 +1,13 @@
-//! A command-line application for answering any question right from your terminal.
+//! A command-line application for answering _any_ question right from your terminal.
+//!
+//! ```console
+//! $ echo "🌭 = 🥪?" | answer
+//! No, a hot dog (🌭) is not the same as a sandwich (🥪).
+//! While they both consist of bread and a filling,
+//! a sandwich typically has separate slices of bread,
+//! while a hot dog has a single bun that is sliced
+//! on the top and filled with a sausage.
+//! ```
 
 use std::{
     env,
@@ -19,7 +28,7 @@ use serde::{Deserialize, Serialize};
 
 /// A command-line application for answering any question right from your terminal.
 ///
-/// This application receives a user message in plain text from the standard input
+/// It receives a user message in plain text from the standard input
 /// and returns an assistant message in plain text to the standard output.
 #[derive(Debug, Parser)]
 #[command(author, version, about)]
@@ -34,16 +43,18 @@ struct Cli {
     verbosity: clap_verbosity_flag::Verbosity,
 }
 
-/// A conversation.
+/// The context of a conversation.
+///
+/// It can be used for building prompts or storing chat history.
 #[derive(Clone, Debug, Default, Serialize, Deserialize)]
 struct Conversation {
-    /// [`Message`]s in the conversation.
+    /// [`Message`]s in this [`Conversation`].
     #[serde(default, skip_serializing_if = "Vec::is_empty")]
     messages: Vec<Message>,
 }
 
 impl Conversation {
-    /// Add a new [`Message`] to the end of this [`Conversation`].
+    /// Append a new [`Message`] to the end of this [`Conversation`].
     #[inline]
     fn push(&mut self, message: Message) {
         self.messages.push(message);
@@ -62,17 +73,16 @@ impl Conversation {
 /// A [`Conversation`] message.
 ///
 /// This is basically a redefinition of [`ChatCompletionRequestMessage`]
-/// so that we can implement traits such
-/// as [`Serialize`] and [`Deserialize`] ourselves.
+/// so that we can implement new traits and methods.
 #[derive(Clone, Debug, Default, Serialize, Deserialize)]
 struct Message {
-    /// The [`Role`] of the author of this message.
+    /// The [`Role`] of the author of the [`Message`].
     #[serde(default, skip_serializing_if = "is_user")]
     role: Role,
-    /// The contents of the message.
+    /// The contents of the [`Message`].
     #[serde(default, skip_serializing_if = "String::is_empty")]
     content: String,
-    /// The name of the author in a multi-agent conversation.
+    /// The name of the author in a multi-agent [`Conversation`].
     #[serde(default, skip_serializing_if = "Option::is_none")]
     name: Option<String>,
 }
@@ -104,12 +114,12 @@ impl From<Message> for ChatCompletionRequestMessage {
     }
 }
 
-/// A robot that answers in plain text.
+/// A robot that answers questions in plain text.
 #[derive(Debug, Default, Serialize, Deserialize)]
 struct Bot {}
 
 impl Bot {
-    /// Reply to the given [`Write`]r.
+    /// Reply, in the context of a [`Conversation`], to the given [`Write`]r.
     #[inline]
     async fn reply_to_writer<W>(
         &self,
@@ -149,7 +159,7 @@ impl Bot {
     }
 }
 
-/// Main function.
+/// Our beloved main function.
 #[tokio::main(flavor = "current_thread")]
 async fn main() -> anyhow::Result<()> {
     human_panic::setup_panic!();
@@ -175,7 +185,7 @@ async fn main() -> anyhow::Result<()> {
     Ok(())
 }
 
-/// Get a conversation from a file [`Path`] by parsing.
+/// Get a [`Conversation`] from a file [`Path`] by parsing.
 #[inline]
 fn parse_conversation(path: &str) -> anyhow::Result<Conversation> {
     let path = Path::new(path);
