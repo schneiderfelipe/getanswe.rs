@@ -240,6 +240,8 @@ impl Bot {
             {
                 writer.write_all(content.as_bytes()).await?;
             }
+
+            writer.flush().await?;
         }
 
         Ok(())
