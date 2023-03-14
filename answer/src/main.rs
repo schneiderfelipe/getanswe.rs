@@ -115,7 +115,7 @@ use clap::Parser;
 use futures::StreamExt;
 use serde::{Deserialize, Serialize};
 use thiserror::Error;
-use tokio::io::{AsyncWrite, AsyncWriteExt};
+use tokio::io::{AsyncReadExt, AsyncWrite, AsyncWriteExt};
 
 /// The context of a conversation.
 ///
@@ -296,7 +296,7 @@ async fn main() -> anyhow::Result<()> {
 
     conversation.push({
         let mut content = String::new();
-        io::stdin().lock().read_to_string(&mut content)?;
+        tokio::io::stdin().read_to_string(&mut content).await?;
 
         Message::from_user(content)
     });
