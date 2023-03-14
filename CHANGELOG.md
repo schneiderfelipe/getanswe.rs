@@ -11,7 +11,7 @@ Do not change it, it is updated automatically.
 
 ### Documentation
 
-- Add instructions ([#11](https://github.com/schneiderfelipe/answer/pull/11)) ([fdaf226](https://github.com/schneiderfelipe/answer/commit/fdaf2264b2cff17aac663be859ccd9b3f13c3bfc))
+- Add instructions ([#11](https://github.com/schneiderfelipe/answer/pull/11)) ([62143eb](https://github.com/schneiderfelipe/answer/commit/62143ebe1d5808a9dd6c7034b622b3dfdafeba3f))
 
 ### Miscellaneous Tasks
 
