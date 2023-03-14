@@ -13,6 +13,10 @@ Do not change it, it is updated automatically.
 
 - Add instructions ([#11](https://github.com/schneiderfelipe/answer/pull/11)) ([62143eb](https://github.com/schneiderfelipe/answer/commit/62143ebe1d5808a9dd6c7034b622b3dfdafeba3f))
 
+### Features
+
+- Use async IO and multiple threads ([#13](https://github.com/schneiderfelipe/answer/pull/13)) ([2b86a30](https://github.com/schneiderfelipe/answer/commit/2b86a3037a14e1dc5c28ec2b7a41dc4b8548bd34))
+
 ### Miscellaneous Tasks
 
 - Post first release adjustments ([#10](https://github.com/schneiderfelipe/answer/pull/10)) ([6e2444f](https://github.com/schneiderfelipe/answer/commit/6e2444f159fca322c51d37634c576c66d0e1541e))
