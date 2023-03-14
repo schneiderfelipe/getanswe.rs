@@ -1,6 +1,7 @@
+//! [![Crates.io](https://img.shields.io/crates/v/answer)](https://crates.io/crates/answer)
+//! [![Crates.io](https://img.shields.io/crates/l/answer)](https://github.com/schneiderfelipe/answer/blob/main/LICENSE)
 //! [![CI](https://github.com/schneiderfelipe/answer/actions/workflows/ci.yml/badge.svg)](https://github.com/schneiderfelipe/answer/actions/workflows/ci.yml)
 //! [![Changelog](https://github.com/schneiderfelipe/answer/actions/workflows/changelog.yml/badge.svg)](https://github.com/schneiderfelipe/answer/blob/main/CHANGELOG.md#changelog)
-//! [![GitHub](https://img.shields.io/github/license/schneiderfelipe/answer)](https://github.com/schneiderfelipe/answer/blob/main/LICENSE)
 //!
 //! A command-line application for answering _any_ question right from your terminal.
 //!
