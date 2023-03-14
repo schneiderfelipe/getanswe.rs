@@ -3,7 +3,11 @@
 //! [![CI](https://github.com/schneiderfelipe/answer/actions/workflows/ci.yml/badge.svg)](https://github.com/schneiderfelipe/answer/actions/workflows/ci.yml)
 //! [![Changelog](https://github.com/schneiderfelipe/answer/actions/workflows/changelog.yml/badge.svg)](https://github.com/schneiderfelipe/answer/blob/main/CHANGELOG.md#changelog)
 //!
-//! A command-line application for answering _any_ question right from your terminal.
+//! `answer` _any_ question right from your terminal,
+//! using the same
+//! [large language model](https://en.wikipedia.org/wiki/Large_language_model)
+//! that powers
+//! [**ChatGPT**](https://chat.openai.com/chat).
 //!
 //! ```console
 //! $ echo "🌭 = 🥪?" | answer
@@ -13,6 +17,88 @@
 //! while a hot dog has a single bun that is sliced
 //! on the top and filled with a sausage.
 //! ```
+//!
+//! Read
+//! the [installation](#installation)
+//! and [usage](#usage) instructions below.
+//!
+//! ## Installation
+//!
+//! ### From source (recommended)
+//!
+//! Either clone the repository to your machine and install from it,
+//! or install directly from GitHub.
+//! Both options require [Rust and Cargo to be installed](https://rustup.rs/).
+//!
+//! ```console
+//! # Option 1: cloning and installing from the repository
+//! $ git clone https://github.com/schneiderfelipe/answer.git
+//! $ cd answer && cargo install --path=answer/
+//!
+//! # Option 2: installing directly from GitHub
+//! $ cargo install --git=https://github.com/schneiderfelipe/answer
+//! ```
+//!
+//! ## Environment Setup
+//!
+//! Before using `answer`,
+//! you need to set up your environment to use
+//! [OpenAI's chat completion API](https://platform.openai.com/docs/guides/chat/chat-completions-beta)
+//! (the same technology that powers OpenAI's most advanced language model,
+//! [ChatGPT](https://chat.openai.com/chat)).
+//! To set up your environment,
+//! you'll need to have a secret API key from OpenAI,
+//! which can be obtained at
+//! [OpenAI's online platform](https://platform.openai.com/account/api-keys).
+//!
+//! Next,
+//! set an environment variable in your shell as follows:
+//!
+//! ```shell
+//! export OPENAI_API_KEY="sk-...a1b2"
+//! ```
+//!
+//! ## Usage
+//!
+//! With your environment set up,
+//! you're ready to start using
+//! the command-line application.
+//! Here's an example:
+//!
+//! ```console
+//! $ echo "Date of birth of Malcolm X?" | answer
+//! The date of birth of Malcolm X is May 19, 1925.
+//! ```
+//!
+//! You can also get `answer`s in context by providing a YAML file containing
+//! the initial part of a chat history.
+//! For example:
+//!
+//! ```yaml
+//! # birthdates.yml
+//! messages:
+//!   - role: system
+//!     content: >-
+//!       You are a date of birth checker.
+//!       Given the name of a person,
+//!       your job is to specify the date of birth of said person.
+//! ```
+//!
+//! ```console
+//! $ echo "Malcolm X" | answer birthdates.yml
+//! Malcolm X was born on May 19th, 1925.
+//! ```
+//!
+//! The file format closely resembles both
+//! [OpenAI's higher-level API](https://platform.openai.com/docs/guides/chat/introduction)
+//! and
+//! [its lower-level ChatML format](https://github.com/openai/openai-python/blob/main/chatml.md).
+//!
+//! ## Unsafe code usage
+//!
+//! This project forbids unsafe code usage.
+
+#![forbid(unsafe_code)]
 
 use std::{
     env,
@@ -157,10 +243,11 @@ impl Bot {
     }
 }
 
-/// A command-line application for answering any question right from your terminal.
+/// answer any question right from your terminal,
+/// using the same large language model ChatGPT.
 ///
-/// It receives a user message in plain text from the standard input
-/// and returns an assistant message in plain text to the standard output.
+/// It receives user message content from the standard input
+/// and returns assistant message content to the standard output.
 #[derive(Debug, Parser)]
 #[command(author, version, about)]
 #[command(propagate_version = true)]
