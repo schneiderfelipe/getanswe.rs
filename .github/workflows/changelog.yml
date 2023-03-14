@@ -1,0 +1,26 @@
+name: Changelog
+
+on:
+  push:
+    branches: ["main"]
+
+env:
+  CARGO_TERM_COLOR: always
+
+jobs:
+  changelog:
+    name: Update changelog
+    runs-on: ubuntu-latest
+
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+      - uses: orhun/git-cliff-action@v2
+        env:
+          OUTPUT: CHANGELOG.md
+      - uses: stefanzweifel/git-auto-commit-action@v4
+        with:
+          commit_message: "chore(changelog): update"
