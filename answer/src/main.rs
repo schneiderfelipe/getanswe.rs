@@ -7,7 +7,7 @@
 //! using the same
 //! [large language model](https://en.wikipedia.org/wiki/Large_language_model)
 //! that powers
-//! [**ChatGPT**](https://chat.openai.com/chat).
+//! [**`ChatGPT`**](https://chat.openai.com/chat).
 //!
 //! ```console
 //! $ echo "🌭 = 🥪?" | answer
@@ -43,13 +43,13 @@
 //!
 //! Before using `answer`,
 //! you need to set up your environment to use
-//! [OpenAI's chat completion API](https://platform.openai.com/docs/guides/chat/chat-completions-beta)
-//! (the same technology that powers OpenAI's most advanced language model,
-//! [ChatGPT](https://chat.openai.com/chat)).
+//! [`OpenAI`'s chat completion API](https://platform.openai.com/docs/guides/chat/chat-completions-beta)
+//! (the same technology that powers `OpenAI`'s most advanced language model,
+//! [`ChatGPT`](https://chat.openai.com/chat)).
 //! To set up your environment,
-//! you'll need to have a secret API key from OpenAI,
+//! you'll need to have a secret API key from `OpenAI`,
 //! which can be obtained at
-//! [OpenAI's online platform](https://platform.openai.com/account/api-keys).
+//! [`OpenAI`'s online platform](https://platform.openai.com/account/api-keys).
 //!
 //! Next,
 //! set an environment variable in your shell as follows:
@@ -90,9 +90,9 @@
 //! ```
 //!
 //! The file format closely resembles both
-//! [OpenAI's higher-level API](https://platform.openai.com/docs/guides/chat/introduction)
+//! [`OpenAI`'s higher-level API](https://platform.openai.com/docs/guides/chat/introduction)
 //! and
-//! [its lower-level ChatML format](https://github.com/openai/openai-python/blob/main/chatml.md).
+//! [its lower-level `ChatML` format](https://github.com/openai/openai-python/blob/main/chatml.md).
 //!
 //! ## Unsafe code usage
 //!
@@ -103,7 +103,7 @@
 use std::{
     env,
     fs::File,
-    io::{self, Read, Write},
+    io::{self, Read},
 };
 
 use async_openai::{
@@ -115,6 +115,7 @@ use clap::Parser;
 use futures::StreamExt;
 use serde::{Deserialize, Serialize};
 use thiserror::Error;
+use tokio::io::{AsyncReadExt, AsyncWrite, AsyncWriteExt};
 
 /// The context of a conversation.
 ///
@@ -203,7 +204,7 @@ enum BotError {
 }
 
 impl Bot {
-    /// Reply, in the context of a [`Conversation`], to the given [`Write`]r.
+    /// Reply, in the context of a [`Conversation`], to the given [`AsyncWrite`]r.
     #[inline]
     async fn reply_to_writer<W>(
         &self,
@@ -211,7 +212,7 @@ impl Bot {
         mut writer: W,
     ) -> Result<(), BotError>
     where
-        W: Write,
+        W: AsyncWrite + Send + Unpin,
     {
         let mut stream = Client::default()
             .with_api_key(env::var("OPENAI_API_KEY")?)
@@ -232,11 +233,13 @@ impl Bot {
             .await?;
 
         while let Some(response) = stream.next().await {
-            response?
+            for content in response?
                 .choices
                 .into_iter()
                 .filter_map(|choice| choice.delta.content)
-                .try_for_each(|content| write!(writer, "{content}"))?;
+            {
+                writer.write_all(content.as_bytes()).await?;
+            }
         }
 
         Ok(())
@@ -244,7 +247,7 @@ impl Bot {
 }
 
 /// answer any question right from your terminal,
-/// using the same large language model ChatGPT.
+/// using the same large language model that powers `ChatGPT`.
 ///
 /// It receives user message content from the standard input
 /// and returns assistant message content to the standard output.
@@ -279,7 +282,7 @@ fn parse_conversation(path: &str) -> Result<Conversation, CliError> {
 }
 
 /// Our beloved main function.
-#[tokio::main(flavor = "current_thread")]
+#[tokio::main]
 async fn main() -> anyhow::Result<()> {
     human_panic::setup_panic!();
 
@@ -293,13 +296,13 @@ async fn main() -> anyhow::Result<()> {
 
     conversation.push({
         let mut content = String::new();
-        io::stdin().lock().read_to_string(&mut content)?;
+        tokio::io::stdin().read_to_string(&mut content).await?;
 
         Message::from_user(content)
     });
 
     Bot::default()
-        .reply_to_writer(&conversation, io::stdout().lock())
+        .reply_to_writer(&conversation, tokio::io::stdout())
         .await?;
     Ok(())
 }
