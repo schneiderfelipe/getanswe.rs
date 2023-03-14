@@ -1,2 +1,6 @@
 [workspace]
 members = ["answer"]
+
+[profile.release]
+lto = true
+strip = true
