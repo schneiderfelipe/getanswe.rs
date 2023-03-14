@@ -32,6 +32,20 @@
 //! $ cargo install --git=https://github.com/schneiderfelipe/answer
 //! ```
 //!
+//! ## Environment setup
+//!
+//! `answer` uses [OpenAI's chat completion API](https://platform.openai.com/docs/guides/chat/chat-completions-beta),
+//! the same technology that powers OpenAI's most advanced language model,
+//! [ChatGPT](https://chat.openai.com/chat).
+//! This requires setting an environment variable in the terminal
+//! with a secret API key.
+//!
+//! ```bash
+//! export OPENAI_API_KEY="sk-...a1b2"
+//! ```
+//!
+//! You can be obtained a secret API key at [OpenAI's online platform](https://platform.openai.com/account/api-keys).
+//!
 //! ## Usage
 //!
 //! `answer` receives user message content from the standard input
