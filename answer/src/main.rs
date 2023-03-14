@@ -282,7 +282,7 @@ fn parse_conversation(path: &str) -> Result<Conversation, CliError> {
 }
 
 /// Our beloved main function.
-#[tokio::main(flavor = "current_thread")]
+#[tokio::main]
 async fn main() -> anyhow::Result<()> {
     human_panic::setup_panic!();
 
