@@ -31,7 +31,7 @@ If applicable, add screenshots to help explain your problem.
 
 **Version**
 
-- Application version: [e.g. v1.0]
+- Application version: [e.g. v0.0.1-alpha.1]
 
 **Additional context**
 Add any other context about the problem here.
