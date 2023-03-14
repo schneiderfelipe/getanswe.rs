@@ -9,6 +9,10 @@ Do not change it, it is updated automatically.
 
 ## [unreleased]
 
+### Documentation
+
+- Add instructions ([#11](https://github.com/schneiderfelipe/answer/pull/11)) ([fdaf226](https://github.com/schneiderfelipe/answer/commit/fdaf2264b2cff17aac663be859ccd9b3f13c3bfc))
+
 ### Miscellaneous Tasks
 
 - Post first release adjustments ([#10](https://github.com/schneiderfelipe/answer/pull/10)) ([6e2444f](https://github.com/schneiderfelipe/answer/commit/6e2444f159fca322c51d37634c576c66d0e1541e))
