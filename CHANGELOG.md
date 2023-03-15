@@ -15,6 +15,7 @@ Do not change it, it is updated automatically.
 
 - Use async IO and multiple threads ([#13](https://github.com/schneiderfelipe/answer/pull/13)) ([2b86a30](https://github.com/schneiderfelipe/answer/commit/2b86a3037a14e1dc5c28ec2b7a41dc4b8548bd34))
 - Flush as tokens are received ([#14](https://github.com/schneiderfelipe/answer/pull/14)) ([0709b7b](https://github.com/schneiderfelipe/answer/commit/0709b7b3b49484ee303aa8624d63bccbaf396c80))
+- Improve ergonomics by using default features ([#16](https://github.com/schneiderfelipe/answer/pull/16)) ([f6f0146](https://github.com/schneiderfelipe/answer/commit/f6f01461ca005ddae16d0a250f67310cbb8e69ec))
 
 
 ### 🏗️ Miscellaneous Tasks
