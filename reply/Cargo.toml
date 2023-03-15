@@ -1,8 +1,24 @@
 [package]
-name = "reply"
-version = "0.0.0"
+name = "answer"
+version = "0.0.1-beta.1"
 edition = "2021"
+authors = ["Felipe S. S. Schneider <schneider.felipe.5@gmail.com>"]
+description = "answer any question right from your terminal, using the same large language model that powers ChatGPT"
+homepage = "https://github.com/schneiderfelipe/answer"
+license = "MIT"
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
+anyhow = { version = "1.0.69" }
+async-openai = { version = "0.9.4" }
+clap = { version = "4.1.8" }
+clap-verbosity-flag = { version = "2.0.0" }
+futures = { version = "0.3.27" }
+human-panic = { version = "1.1.1" }
+log = { version = "0.4.17" }
+pretty_env_logger = { version = "0.4.0" }
+serde = { version = "1.0.156" }
+serde_yaml = { version = "0.9.19" }
+thiserror = { version = "1.0.39" }
+tokio = { version = "1.26.0", features = ["io-std", "rt-multi-thread"] }
