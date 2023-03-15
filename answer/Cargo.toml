@@ -4,7 +4,7 @@ version = "0.0.1-beta.1"
 edition = "2021"
 authors = ["Felipe S. S. Schneider <schneider.felipe.5@gmail.com>"]
 description = "answer any question right from your terminal, using the same large language model that powers ChatGPT"
-homepage = "https://github.com/schneiderfelipe/answer"
+homepage = "https://github.com/schneiderfelipe/answer/tree/main/answer"
 license = "MIT"
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
