@@ -1,13 +1,15 @@
-//! [![Crates.io](https://img.shields.io/crates/v/answer)](https://crates.io/crates/answer)
-//! [![Crates.io](https://img.shields.io/crates/l/answer)](https://github.com/schneiderfelipe/answer/blob/main/LICENSE)
-//! [![CI](https://github.com/schneiderfelipe/answer/actions/workflows/ci.yml/badge.svg)](https://github.com/schneiderfelipe/answer/actions/workflows/ci.yml)
-//! [![Changelog](https://github.com/schneiderfelipe/answer/actions/workflows/changelog.yml/badge.svg)](https://github.com/schneiderfelipe/answer/blob/main/CHANGELOG.md#changelog)
+//! [![Crates.io version](https://img.shields.io/crates/v/answer)](https://crates.io/crates/answer)
+//! [![GitHub release (latest by date including pre-releases)](https://img.shields.io/github/v/release/schneiderfelipe/answer?include_prereleases)](https://github.com/schneiderfelipe/answer/releases)
+//! [![Crates.io license](https://img.shields.io/crates/l/answer)](https://github.com/schneiderfelipe/answer/blob/main/LICENSE)
+//! [![Build CI](https://github.com/schneiderfelipe/answer/actions/workflows/ci.yml/badge.svg)](https://github.com/schneiderfelipe/answer/actions/workflows/ci.yml)
+//! [![Changelog CI](https://github.com/schneiderfelipe/answer/actions/workflows/changelog.yml/badge.svg)](https://github.com/schneiderfelipe/answer/blob/main/CHANGELOG.md#changelog)
+//! [![Libraries.io SourceRank](https://img.shields.io/librariesio/sourcerank/cargo/answer)](https://libraries.io/cargo/answer)
 //!
-//! `answer` _any_ question right from your terminal,
-//! using the same
-//! [large language model](https://en.wikipedia.org/wiki/Large_language_model)
-//! that powers
-//! [**`ChatGPT`**](https://chat.openai.com/chat).
+//! > `answer` _any_ question right from your terminal,
+//! > using the same
+//! > [large language model](https://en.wikipedia.org/wiki/Large_language_model)
+//! > that powers
+//! > [**`ChatGPT`**](https://chat.openai.com/chat).
 //!
 //! ```console
 //! $ echo "🌭 = 🥪?" | answer

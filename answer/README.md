@@ -1,15 +1,17 @@
 # answer
 
-[![Crates.io](https://img.shields.io/crates/v/answer)](https://crates.io/crates/answer)
-[![Crates.io](https://img.shields.io/crates/l/answer)](https://github.com/schneiderfelipe/answer/blob/main/LICENSE)
-[![CI](https://github.com/schneiderfelipe/answer/actions/workflows/ci.yml/badge.svg)](https://github.com/schneiderfelipe/answer/actions/workflows/ci.yml)
-[![Changelog](https://github.com/schneiderfelipe/answer/actions/workflows/changelog.yml/badge.svg)](https://github.com/schneiderfelipe/answer/blob/main/CHANGELOG.md#changelog)
+[![Crates.io version](https://img.shields.io/crates/v/answer)](https://crates.io/crates/answer)
+[![GitHub release (latest by date including pre-releases)](https://img.shields.io/github/v/release/schneiderfelipe/answer?include_prereleases)](https://github.com/schneiderfelipe/answer/releases)
+[![Crates.io license](https://img.shields.io/crates/l/answer)](https://github.com/schneiderfelipe/answer/blob/main/LICENSE)
+[![Build CI](https://github.com/schneiderfelipe/answer/actions/workflows/ci.yml/badge.svg)](https://github.com/schneiderfelipe/answer/actions/workflows/ci.yml)
+[![Changelog CI](https://github.com/schneiderfelipe/answer/actions/workflows/changelog.yml/badge.svg)](https://github.com/schneiderfelipe/answer/blob/main/CHANGELOG.md#changelog)
+[![Libraries.io SourceRank](https://img.shields.io/librariesio/sourcerank/cargo/answer)](https://libraries.io/cargo/answer)
 
-`answer` _any_ question right from your terminal,
-using the same
-[large language model](https://en.wikipedia.org/wiki/Large_language_model)
-that powers
-[**ChatGPT**](https://chat.openai.com/chat).
+> `answer` _any_ question right from your terminal,
+> using the same
+> [large language model](https://en.wikipedia.org/wiki/Large_language_model)
+> that powers
+> [**`ChatGPT`**](https://chat.openai.com/chat).
 
 ```console
 $ echo "🌭 = 🥪?" | answer
@@ -45,13 +47,13 @@ $ cargo install --git=https://github.com/schneiderfelipe/answer
 
 Before using `answer`,
 you need to set up your environment to use
-[OpenAI's chat completion API](https://platform.openai.com/docs/guides/chat/chat-completions-beta)
-(the same technology that powers OpenAI's most advanced language model,
-[ChatGPT](https://chat.openai.com/chat)).
+[`OpenAI`'s chat completion API](https://platform.openai.com/docs/guides/chat/chat-completions-beta)
+(the same technology that powers `OpenAI`'s most advanced language model,
+[`ChatGPT`](https://chat.openai.com/chat)).
 To set up your environment,
-you'll need to have a secret API key from OpenAI,
+you'll need to have a secret API key from `OpenAI`,
 which can be obtained at
-[OpenAI's online platform](https://platform.openai.com/account/api-keys).
+[`OpenAI`'s online platform](https://platform.openai.com/account/api-keys).
 
 Next,
 set an environment variable in your shell as follows:
@@ -92,9 +94,9 @@ Malcolm X was born on May 19th, 1925.
 ```
 
 The file format closely resembles both
-[OpenAI's higher-level API](https://platform.openai.com/docs/guides/chat/introduction)
+[`OpenAI`'s higher-level API](https://platform.openai.com/docs/guides/chat/introduction)
 and
-[its lower-level ChatML format](https://github.com/openai/openai-python/blob/main/chatml.md).
+[its lower-level `ChatML` format](https://github.com/openai/openai-python/blob/main/chatml.md).
 
 ### Unsafe code usage
 
