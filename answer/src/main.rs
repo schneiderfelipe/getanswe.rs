@@ -220,6 +220,7 @@ impl Bot {
             .create_stream({
                 CreateChatCompletionRequestArgs::default()
                     .model("gpt-3.5-turbo")
+                    .temperature(0.0)
                     .messages(
                         conversation
                             .messages
@@ -240,6 +241,8 @@ impl Bot {
             {
                 writer.write_all(content.as_bytes()).await?;
             }
+
+            writer.flush().await?;
         }
 
         Ok(())
