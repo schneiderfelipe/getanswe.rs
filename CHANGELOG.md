@@ -7,7 +7,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 Do not change it, it is updated automatically.
 
-## [unreleased]
+## [answer-v0.0.1-beta.1] - 2023-03-15
+
+[f64d1a1](https://github.com/schneiderfelipe/answer/commit/f64d1a10038d64d9c96d30688164c285d5c773db)...[de9235a](https://github.com/schneiderfelipe/answer/commit/de9235a59e5e14a0e7d90e353acf31a27a87571a)
 
 ### 🌟 Features
 
