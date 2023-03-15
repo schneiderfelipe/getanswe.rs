@@ -5,6 +5,7 @@ edition = "2021"
 authors = ["Felipe S. S. Schneider <schneider.felipe.5@gmail.com>"]
 description = "Convert any command-line application into a REPL"
 homepage = "https://github.com/schneiderfelipe/answer/tree/main/reply"
+repository = "https://github.com/schneiderfelipe/answer"
 license = "MIT"
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
