@@ -1,20 +1,20 @@
-# answer
+# reply
 
-[![Crates.io version](https://img.shields.io/crates/v/answer)](https://crates.io/crates/answer)
+[![Crates.io version](https://img.shields.io/crates/v/reply)](https://crates.io/crates/reply)
 [![GitHub release (latest by date including pre-releases)](https://img.shields.io/github/v/release/schneiderfelipe/answer?include_prereleases)](https://github.com/schneiderfelipe/answer/releases)
-[![Crates.io license](https://img.shields.io/crates/l/answer)](https://github.com/schneiderfelipe/answer/blob/main/LICENSE)
+[![Crates.io license](https://img.shields.io/crates/l/reply)](https://github.com/schneiderfelipe/answer/blob/main/LICENSE)
 [![Build CI](https://github.com/schneiderfelipe/answer/actions/workflows/ci.yml/badge.svg)](https://github.com/schneiderfelipe/answer/actions/workflows/ci.yml)
 [![Changelog CI](https://github.com/schneiderfelipe/answer/actions/workflows/changelog.yml/badge.svg)](https://github.com/schneiderfelipe/answer/blob/main/CHANGELOG.md#changelog)
-[![Libraries.io `SourceRank`](https://img.shields.io/librariesio/sourcerank/cargo/answer)](https://libraries.io/cargo/answer)
+[![Libraries.io `SourceRank`](https://img.shields.io/librariesio/sourcerank/cargo/reply)](https://libraries.io/cargo/reply)
 
-> `answer` _any_ question right from your terminal,
+> `reply` _any_ question right from your terminal,
 > using the same
 > [large language model](https://en.wikipedia.org/wiki/Large_language_model)
 > that powers
 > [**`ChatGPT`**](https://chat.openai.com/chat).
 
 ```console
-$ echo "🌭 = 🥪?" | answer
+$ echo "🌭 = 🥪?" | reply
 No, a hot dog (🌭) is not the same as a sandwich (🥪).
 While they both consist of bread and a filling,
 a sandwich typically has separate slices of bread,
@@ -36,16 +36,16 @@ Both options require [Rust and Cargo to be installed](https://rustup.rs/).
 
 ```console
 # Option 1: cloning and installing from the repository
-$ git clone https://github.com/schneiderfelipe/answer.git
-$ cd answer && cargo install --path=answer/
+$ git clone https://github.com/schneiderfelipe/reply.git
+$ cd reply && cargo install --path=reply/
 
 # Option 2: installing directly from GitHub
-$ cargo install --git=https://github.com/schneiderfelipe/answer
+$ cargo install --git=https://github.com/schneiderfelipe/reply
 ```
 
 ### Environment Setup
 
-Before using `answer`,
+Before using `reply`,
 you need to set up your environment to use
 [`OpenAI`'s chat completion API](https://platform.openai.com/docs/guides/chat/chat-completions-beta)
 (the same technology that powers `OpenAI`'s most advanced language model,
@@ -70,11 +70,11 @@ the command-line application.
 Here's an example:
 
 ```console
-$ echo "Date of birth of Malcolm X?" | answer
+$ echo "Date of birth of Malcolm X?" | reply
 The date of birth of Malcolm X is May 19, 1925.
 ```
 
-You can also get `answer`s in context by providing a YAML file containing
+You can also get `reply`s in context by providing a YAML file containing
 the initial part of a chat history.
 For example:
 
@@ -89,7 +89,7 @@ messages:
 ```
 
 ```console
-$ echo "Malcolm X" | answer birthdates.yml
+$ echo "Malcolm X" | reply birthdates.yml
 Malcolm X was born on May 19th, 1925.
 ```
 
