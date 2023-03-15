@@ -26,8 +26,11 @@ body = """
 {% endif %}\
 {% for group, commits in commits | group_by(attribute="group") %}
     ### {{ group | upper_first }}
-    {% for commit in commits %}
-        - {{ commit.message | upper_first }} ([{{ commit.id | truncate(length=7, end="") }}](https://github.com/schneiderfelipe/answer/commit/{{ commit.id }}))\
+    {% for scope, commits in commits | group_by(attribute="scope") %}
+        `{{ scope }}`:
+        {% for commit in commits %}
+            - {{ commit.message | upper_first }} ([{{ commit.id | truncate(length=7, end="") }}](https://github.com/schneiderfelipe/answer/commit/{{ commit.id }}))\
+        {% endfor %}
     {% endfor %}
 {% endfor %}\n
 """
@@ -52,18 +55,22 @@ commit_preprocessors = [
 ]
 # regex for parsing and grouping commits
 commit_parsers = [
-  { message = "^feat", group = "Features" },
-  { message = "^fix", group = "Bug Fixes" },
-  { message = "^doc", group = "Documentation" },
-  { message = "^perf", group = "Performance" },
-  { message = "^refactor", group = "Refactor" },
-  { message = "^style", group = "Styling" },
-  { message = "^test", group = "Testing" },
-  { message = "^chore\\(release\\): prepare for", skip = true },
-  { message = "^chore: Release", skip = true },
+  { message = "^build", group = "👷 Building" },
+  { message = "^ci", group = "🚀 Continuous Integration" },
+  { message = "^doc", group = "📝 Documentation" },
+  { message = "^feat", group = "🌟 Features" },
+  { message = "^fix", group = "🐛 Bug Fixes" },
+  { message = "^perf", group = "⚡️ Performance" },
+  { message = "^refactor", group = "♻️ Refactor" },
+  { message = "^revert", group = "⏪️ Revert" },
+  { message = "^style", group = "🎨 Styling" },
+  { message = "^test", group = "🚦 Testing" },
+  { body = ".*security", group = "🔒️ Security" },
+  { message = "^chore: Changelog", skip = true },
   { message = "^chore\\(changelog\\): update", skip = true },
-  { message = "^chore", group = "Miscellaneous Tasks" },
-  { body = ".*security", group = "Security" },
+  { message = "^chore: Release", skip = true, group = "🔖 Release" },
+  { message = "^chore\\(release\\): prepare for", skip = true, group = "🔖 Release" },
+  { message = "^chore", group = "🏗️ Miscellaneous Tasks" },
 ]
 # protect breaking changes from being skipped due to matching a skipping commit_parser
 protect_breaking_commits = false
