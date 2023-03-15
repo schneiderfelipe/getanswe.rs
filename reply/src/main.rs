@@ -1,8 +1,8 @@
 //! [![Crates.io version](https://img.shields.io/crates/v/reply)](https://crates.io/crates/reply)
-//! [![GitHub release (latest by date including pre-releases)](https://img.shields.io/github/v/release/schneiderfelipe/reply?include_prereleases)](https://github.com/schneiderfelipe/reply/releases)
-//! [![Crates.io license](https://img.shields.io/crates/l/reply)](https://github.com/schneiderfelipe/reply/blob/main/LICENSE)
-//! [![Build CI](https://github.com/schneiderfelipe/reply/actions/workflows/ci.yml/badge.svg)](https://github.com/schneiderfelipe/reply/actions/workflows/ci.yml)
-//! [![Changelog CI](https://github.com/schneiderfelipe/reply/actions/workflows/changelog.yml/badge.svg)](https://github.com/schneiderfelipe/reply/blob/main/CHANGELOG.md#changelog)
+//! [![GitHub release (latest by date including pre-releases)](https://img.shields.io/github/v/release/schneiderfelipe/answer?include_prereleases)](https://github.com/schneiderfelipe/answer/releases)
+//! [![Crates.io license](https://img.shields.io/crates/l/reply)](https://github.com/schneiderfelipe/answer/blob/main/LICENSE)
+//! [![Build CI](https://github.com/schneiderfelipe/answer/actions/workflows/ci.yml/badge.svg)](https://github.com/schneiderfelipe/answer/actions/workflows/ci.yml)
+//! [![Changelog CI](https://github.com/schneiderfelipe/answer/actions/workflows/changelog.yml/badge.svg)](https://github.com/schneiderfelipe/answer/blob/main/CHANGELOG.md#changelog)
 //! [![Libraries.io `SourceRank`](https://img.shields.io/librariesio/sourcerank/cargo/reply)](https://libraries.io/cargo/reply)
 //!
 //! > `reply` _any_ question right from your terminal,
