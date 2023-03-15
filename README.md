@@ -1,7 +1,7 @@
 # answer
 
 [![Crates.io version](https://img.shields.io/crates/v/answer)](https://crates.io/crates/answer)
-[![Crates.io license](https://img.shields.io/crates/l/answer)](https://github.com/schneiderfelipe/answer/blob/main/LICENSE)
+[![GitHub license](https://img.shields.io/github/license/schneiderfelipe/answer)](https://github.com/schneiderfelipe/answer/blob/main/LICENSE)
 [![Build CI](https://github.com/schneiderfelipe/answer/actions/workflows/ci.yml/badge.svg)](https://github.com/schneiderfelipe/answer/actions/workflows/ci.yml)
 [![Changelog CI](https://github.com/schneiderfelipe/answer/actions/workflows/changelog.yml/badge.svg)](https://github.com/schneiderfelipe/answer/blob/main/CHANGELOG.md#changelog)
 [![Libraries.io `SourceRank`](https://img.shields.io/librariesio/sourcerank/cargo/answer)](https://libraries.io/cargo/answer)
