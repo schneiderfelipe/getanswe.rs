@@ -21,6 +21,11 @@ jobs:
         with:
           fetch-depth: 0
 
+      - uses: actions-rs/install@v0.1
+        with:
+          crate: cargo-readme
+          version: latest
+          use-tool-cache: true
       - name: Update answer/README.md
         working-directory: ./answer
         run: cargo readme > README.md

@@ -19,7 +19,7 @@ that powers [**`ChatGPT`**](https://chat.openai.com/chat).
 
 [_Read on_ to learn more](https://github.com/schneiderfelipe/getanswe.rs/tree/main/answer#answer).
 
-## [`reply`📩](https://crates.io/crates/answer)
+## [`reply`📩](https://crates.io/crates/reply)
 
 Allow users to `reply` to [command-line🎮](https://en.wikipedia.org/wiki/Command-line_interface) applications
 by turning them into (stateless)
