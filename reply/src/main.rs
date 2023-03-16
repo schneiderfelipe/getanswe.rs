@@ -32,7 +32,7 @@
 //! $ cd reply && cargo install --path=reply/
 //!
 //! # Option 2: installing directly from GitHub
-//! $ cargo install --git=https://github.com/schneiderfelipe/answer
+//! $ cargo install reply --git=https://github.com/schneiderfelipe/answer
 //! ```
 //!
 //! ## Unsafe code usage

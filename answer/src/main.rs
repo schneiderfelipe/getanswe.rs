@@ -37,7 +37,7 @@
 //! $ cd answer && cargo install --path=answer/
 //!
 //! # Option 2: installing directly from GitHub
-//! $ cargo install --git=https://github.com/schneiderfelipe/answer
+//! $ cargo install answer --git=https://github.com/schneiderfelipe/answer
 //! ```
 //!
 //! ## Environment Setup
