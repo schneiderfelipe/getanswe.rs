@@ -4,7 +4,7 @@
 //! [![Changelog CI](https://github.com/schneiderfelipe/answer/actions/workflows/changelog.yml/badge.svg)](https://github.com/schneiderfelipe/answer/blob/main/CHANGELOG.md#changelog)
 //! [![Libraries.io `SourceRank`](https://img.shields.io/librariesio/sourcerank/cargo/reply)](https://libraries.io/cargo/reply)
 //!
-//! > `reply` makes a stateless [REPL](https://en.wikipedia.org/wiki/Read%E2%80%93eval%E2%80%93print_loop) out of any command-line application.
+//! > `reply` makes any command-line application a (stateless) [REPL](https://en.wikipedia.org/wiki/Read%E2%80%93eval%E2%80%93print_loop).
 //!
 //! ```console
 //! $ reply python
