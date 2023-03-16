@@ -41,7 +41,10 @@
 
 #![forbid(unsafe_code)]
 
-use std::{env, io};
+use std::{
+    env,
+    io::{self, Read, Write},
+};
 
 use clap::Parser;
 use duct::Expression;
@@ -114,8 +117,16 @@ fn main() -> anyhow::Result<()> {
         };
         match line {
             Ok(line) => {
-                println!("{line}");
                 // editor.save_history(&self.history_path)?;
+
+                let mut reader = cli.expression.unchecked().stdin_bytes(line).reader()?;
+
+                let mut output = String::new();
+                reader.read_to_string(&mut output)?;
+
+                let mut stdout = io::stdout().lock();
+                write!(stdout, "{output}")?;
+                stdout.flush()?;
             }
             Err(ReadlineError::Interrupted | ReadlineError::Eof) => break,
             err @ Err(_) => {
