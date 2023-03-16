@@ -1,13 +1,13 @@
 # Examples
 
 This directory contains a set of prompt examples
-in [`answer` context format](https://github.com/schneiderfelipe/answer#usage).
+in [`answer` context format](https://github.com/schneiderfelipe/getanswe.rs#usage).
 
 ## [Awesome ChatGPT Prompts](https://github.com/f/awesome-chatgpt-prompts)
 
 This is a collection of prompt examples to be used with ChatGPT
 curated by [@f](https://github.com/f).
-They work particularly well with `answer`,
+They work particularly well with [`answer`💭](https://crates.io/crates/answer),
 with little to no adaptation required.
 
 For example,

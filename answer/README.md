@@ -1,12 +1,12 @@
 # answer
 
 [![Crates.io version](https://img.shields.io/crates/v/answer)](https://crates.io/crates/answer)
-[![GitHub license](https://img.shields.io/github/license/schneiderfelipe/answer)](https://github.com/schneiderfelipe/answer/blob/main/LICENSE)
-[![Build CI](https://github.com/schneiderfelipe/answer/actions/workflows/ci.yml/badge.svg)](https://github.com/schneiderfelipe/answer/actions/workflows/ci.yml)
-[![Changelog CI](https://github.com/schneiderfelipe/answer/actions/workflows/changelog.yml/badge.svg)](https://github.com/schneiderfelipe/answer/blob/main/CHANGELOG.md#changelog)
+[![GitHub license](https://img.shields.io/github/license/schneiderfelipe/getanswe.rs)](https://github.com/schneiderfelipe/getanswe.rs/blob/main/LICENSE)
+[![Build CI](https://github.com/schneiderfelipe/getanswe.rs/actions/workflows/ci.yml/badge.svg)](https://github.com/schneiderfelipe/getanswe.rs/actions/workflows/ci.yml)
+[![Changelog CI](https://github.com/schneiderfelipe/getanswe.rs/actions/workflows/changelog.yml/badge.svg)](https://github.com/schneiderfelipe/getanswe.rs/blob/main/CHANGELOG.md#changelog)
 [![Libraries.io `SourceRank`](https://img.shields.io/librariesio/sourcerank/cargo/answer)](https://libraries.io/cargo/answer)
 
-> `answer` _any_ question right from your terminal,
+> [`answer`💭](https://crates.io/crates/answer) _any_ question right from your terminal,
 > using the same
 > [large language model](https://en.wikipedia.org/wiki/Large_language_model)
 > that powers
@@ -35,11 +35,11 @@ Both options require [Rust and Cargo to be installed](https://rustup.rs/).
 
 ```console
 # Option 1: cloning and installing from the repository
-$ git clone https://github.com/schneiderfelipe/answer.git
-$ cd answer && cargo install answer --path=answer/
+$ git clone https://github.com/schneiderfelipe/getanswe.rs.git
+$ cd getanswe.rs && cargo install answer --path=answer/
 
 # Option 2: installing directly from GitHub
-$ cargo install answer --git=https://github.com/schneiderfelipe/answer
+$ cargo install answer --git=https://github.com/schneiderfelipe/getanswe.rs
 ```
 
 If you're looking to contribute to the project's development,
@@ -50,7 +50,7 @@ the second option is likely the better choice.
 
 ### Environment Setup
 
-Before using `answer`,
+Before using [`answer`💭](https://crates.io/crates/answer),
 you need to set up your environment to use
 [`OpenAI`'s chat completion API](https://platform.openai.com/docs/guides/chat/chat-completions-beta)
 (the same technology that powers `OpenAI`'s most advanced language model,
