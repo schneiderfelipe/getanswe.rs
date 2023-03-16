@@ -21,6 +21,12 @@ Do not change it, it is updated automatically.
 ### 🏗️ Miscellaneous Tasks
 
 
+`README.md`:
+
+
+- Change the emoji position and add link ([#24](https://github.com/schneiderfelipe/getanswe.rs/pull/24)) ([762c63e](https://github.com/schneiderfelipe/getanswe.rs/commit/762c63ecf277e29251d49f5132173bff92cf2961))
+
+
 ### 📝 Documentation
 
 
