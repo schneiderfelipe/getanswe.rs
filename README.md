@@ -1,26 +1,28 @@
-# getanswe.rs
+# getanswe.rs💬
 
-This Rust workspace repository
-contains command-line applications that
-serve as the foundation for creating large language model applications.
-Think of it as a collection of Lego pieces that you can use
+This [Rust🦀](https://www.rust-lang.org/) workspace repository contains
+[command-line🎮](https://en.wikipedia.org/wiki/Command-line_interface)
+applications that serve as the foundation for creating
+[large language model🧠](https://en.wikipedia.org/wiki/Large_language_model)
+applications.
+Think of it as a collection of LEGO® bricks that you can use
 to construct anything you can imagine!
 
-Read on to learn more about each application and how to use them.
+_Read on_ to learn more about each application and how to use them.
 
-## [`answer`](https://crates.io/crates/answer)
+## [`answer`💭](https://crates.io/crates/answer)
 
-The `answer`
-([`README.md`](https://github.com/schneiderfelipe/getanswe.rs/tree/main/answer#answer))
-command-line application allows users to ask and receive `answer`s to questions
+Allow users to ask and receive `answer`s to questions
 using the same
-[large language model](https://en.wikipedia.org/wiki/Large_language_model)
+[large language model🧠](https://en.wikipedia.org/wiki/Large_language_model)
 that powers [**`ChatGPT`**](https://chat.openai.com/chat).
 
-## [`reply`](https://crates.io/crates/answer)
+[_Read on_ to learn more](https://github.com/schneiderfelipe/getanswe.rs/tree/main/answer#answer).
 
-The `reply`
-([`README.md`](https://github.com/schneiderfelipe/getanswe.rs/tree/main/reply#reply))
-command-line application allows users to `reply` to command-line applications
+## [`reply`📩](https://crates.io/crates/answer)
+
+Allow users to `reply` to [command-line🎮](https://en.wikipedia.org/wiki/Command-line_interface) applications
 by turning them into (stateless)
-[REPLs](https://en.wikipedia.org/wiki/Read%E2%80%93eval%E2%80%93print_loop).
+[**REPL**s](https://en.wikipedia.org/wiki/Read%E2%80%93eval%E2%80%93print_loop).
+
+[_Read on_ to learn more](https://github.com/schneiderfelipe/getanswe.rs/tree/main/reply#reply).
