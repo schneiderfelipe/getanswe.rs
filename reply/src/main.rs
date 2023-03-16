@@ -46,6 +46,7 @@ use std::{env, io};
 use clap::Parser;
 use duct::Expression;
 use duct_sh::sh_dangerous;
+use rustyline::{error::ReadlineError, Cmd, Config, Editor, KeyEvent};
 use thiserror::Error;
 
 /// reply any question right from your terminal,
@@ -91,6 +92,37 @@ fn main() -> anyhow::Result<()> {
         .filter_level(cli.verbosity.log_level_filter())
         .init();
     log::debug!("{cli:#?}");
+
+    let config = Config::builder().auto_add_history(true).build();
+    let mut editor = Editor::with_config(config)?;
+    editor.set_helper(Some(()));
+    editor.bind_sequence(KeyEvent::alt('\r'), Cmd::Newline);
+
+    // let history_path = data_dir.join("history.txt");
+    // if editor.load_history(&history_path).is_err() {
+    //     log::warn!("No previous history found.");
+    // }
+
+    loop {
+        let line = loop {
+            let line = editor.readline("> ");
+            match line {
+                Ok(ref l) if !l.trim().is_empty() => break line,
+                err @ Err(_) => break err,
+                _ => {}
+            }
+        };
+        match line {
+            Ok(line) => {
+                println!("{line}");
+                // editor.save_history(&self.history_path)?;
+            }
+            Err(ReadlineError::Interrupted | ReadlineError::Eof) => break,
+            err @ Err(_) => {
+                err?;
+            }
+        }
+    }
 
     Ok(())
 }
