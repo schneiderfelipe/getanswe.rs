@@ -1,7 +1,7 @@
 //! [![Crates.io version](https://img.shields.io/crates/v/reply)](https://crates.io/crates/reply)
-//! [![GitHub license](https://img.shields.io/github/license/schneiderfelipe/getanswers)](https://github.com/schneiderfelipe/getanswers/blob/main/LICENSE)
-//! [![Build CI](https://github.com/schneiderfelipe/getanswers/actions/workflows/ci.yml/badge.svg)](https://github.com/schneiderfelipe/getanswers/actions/workflows/ci.yml)
-//! [![Changelog CI](https://github.com/schneiderfelipe/getanswers/actions/workflows/changelog.yml/badge.svg)](https://github.com/schneiderfelipe/getanswers/blob/main/CHANGELOG.md#changelog)
+//! [![GitHub license](https://img.shields.io/github/license/schneiderfelipe/getanswe.rs)](https://github.com/schneiderfelipe/getanswe.rs/blob/main/LICENSE)
+//! [![Build CI](https://github.com/schneiderfelipe/getanswe.rs/actions/workflows/ci.yml/badge.svg)](https://github.com/schneiderfelipe/getanswe.rs/actions/workflows/ci.yml)
+//! [![Changelog CI](https://github.com/schneiderfelipe/getanswe.rs/actions/workflows/changelog.yml/badge.svg)](https://github.com/schneiderfelipe/getanswe.rs/blob/main/CHANGELOG.md#changelog)
 //! [![Libraries.io `SourceRank`](https://img.shields.io/librariesio/sourcerank/cargo/reply)](https://libraries.io/cargo/reply)
 //!
 //! > `reply` makes any command-line application a (stateless) [REPL](https://en.wikipedia.org/wiki/Read%E2%80%93eval%E2%80%93print_loop).
@@ -28,11 +28,11 @@
 //!
 //! ```console
 //! # Option 1: cloning and installing from the repository
-//! $ git clone https://github.com/schneiderfelipe/getanswers.git
+//! $ git clone https://github.com/schneiderfelipe/getanswe.rs.git
 //! $ cd answer && cargo install reply --path=reply/
 //!
 //! # Option 2: installing directly from GitHub
-//! $ cargo install reply --git=https://github.com/schneiderfelipe/getanswers
+//! $ cargo install reply --git=https://github.com/schneiderfelipe/getanswe.rs
 //! ```
 //!
 //! If you're looking to contribute to the project's development,

@@ -9,8 +9,8 @@ assignees: ""
 **Please complete the following tasks**
 
 - [ ] I have searched the documentation and help resources before reporting.
-- [ ] I have searched the [discussions](https://github.com/schneiderfelipe/getanswers/discussions) to avoid duplicates.
-- [ ] I have searched the [open](https://github.com/schneiderfelipe/getanswers/issues) and [closed](https://github.com/schneiderfelipe/getanswers/issues?q=is%3Aissue+is%3Aclosed) issues to avoid duplicates.
+- [ ] I have searched the [discussions](https://github.com/schneiderfelipe/getanswe.rs/discussions) to avoid duplicates.
+- [ ] I have searched the [open](https://github.com/schneiderfelipe/getanswe.rs/issues) and [closed](https://github.com/schneiderfelipe/getanswe.rs/issues?q=is%3Aissue+is%3Aclosed) issues to avoid duplicates.
 
 **Describe the bug**
 A clear and concise description of what the bug is.

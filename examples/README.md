@@ -1,7 +1,7 @@
 # Examples
 
 This directory contains a set of prompt examples
-in [`answer` context format](https://github.com/schneiderfelipe/getanswers#usage).
+in [`answer` context format](https://github.com/schneiderfelipe/getanswe.rs#usage).
 
 ## [Awesome ChatGPT Prompts](https://github.com/f/awesome-chatgpt-prompts)
 

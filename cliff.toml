@@ -20,20 +20,20 @@ body = """
 {% endif %}\
 {% if previous %}\
     {% if previous.commit_id %}
-        [{{ previous.commit_id | truncate(length=7, end="") }}](https://github.com/schneiderfelipe/getanswers/commit/{{ previous.commit_id }})...\
-            [{{ commit_id | truncate(length=7, end="") }}](https://github.com/schneiderfelipe/getanswers/commit/{{ commit_id }})
+        [{{ previous.commit_id | truncate(length=7, end="") }}](https://github.com/schneiderfelipe/getanswe.rs/commit/{{ previous.commit_id }})...\
+            [{{ commit_id | truncate(length=7, end="") }}](https://github.com/schneiderfelipe/getanswe.rs/commit/{{ commit_id }})
     {% endif %}\
 {% endif %}\
 {% for group, commits in commits | group_by(attribute="group") %}
     ### {{ group | upper_first }}
     {% for scope, commits in commits | group_by(attribute="scope") %}
         {% if scope in ["answer", "reply"] %}
-            [`{{ scope }}`](https://github.com/schneiderfelipe/getanswers/tree/main/{{ scope }}#{{ scope }}) ([crates.io](https://crates.io/crates/{{ scope }})):
+            [`{{ scope }}`](https://github.com/schneiderfelipe/getanswe.rs/tree/main/{{ scope }}#{{ scope }}) ([crates.io](https://crates.io/crates/{{ scope }})):
         {% else %}
             `{{ scope }}`:
         {% endif %}
         {% for commit in commits %}
-            - {{ commit.message | upper_first }} ([{{ commit.id | truncate(length=7, end="") }}](https://github.com/schneiderfelipe/getanswers/commit/{{ commit.id }}))\
+            - {{ commit.message | upper_first }} ([{{ commit.id | truncate(length=7, end="") }}](https://github.com/schneiderfelipe/getanswe.rs/commit/{{ commit.id }}))\
         {% endfor %}
     {% endfor %}
 {% endfor %}\n
@@ -54,8 +54,8 @@ filter_unconventional = true
 split_commits = false
 # regex for preprocessing the commit messages
 commit_preprocessors = [
-  { pattern = '\((\w+\s)?#([0-9]+)\)', replace = "([#${2}](https://github.com/schneiderfelipe/getanswers/pull/${2}))" },                                               # replace pull request numbers
-  { pattern = '([Rr]esolve[ds]?|[Cc]lose[ds]?|[Ff]ixe[ds]|[Ff]ix)\s+#([0-9]+)', replace = "${1} [#${2}](https://github.com/schneiderfelipe/getanswers/issues/${2})" },
+  { pattern = '\((\w+\s)?#([0-9]+)\)', replace = "([#${2}](https://github.com/schneiderfelipe/getanswe.rs/pull/${2}))" },                                               # replace pull request numbers
+  { pattern = '([Rr]esolve[ds]?|[Cc]lose[ds]?|[Ff]ixe[ds]|[Ff]ix)\s+#([0-9]+)', replace = "${1} [#${2}](https://github.com/schneiderfelipe/getanswe.rs/issues/${2})" },
 ]
 # regex for parsing and grouping commits
 commit_parsers = [
