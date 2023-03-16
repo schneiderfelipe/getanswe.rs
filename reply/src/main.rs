@@ -81,8 +81,8 @@ use thiserror::Error;
 #[command(author, version, about)]
 #[command(propagate_version = true)]
 struct Cli {
-    // TODO: review from here
-    /// Expression to run as the backend when user input is received.
+    /// The expression that will run as the backend application
+    /// when user input is received.
     #[arg(value_parser = parse_expression)]
     expression: Expression,
 
