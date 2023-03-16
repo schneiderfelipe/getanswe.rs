@@ -7,11 +7,22 @@
 //! > [`reply`📩](https://crates.io/crates/reply) makes any command-line application a (stateless) [REPL](https://en.wikipedia.org/wiki/Read%E2%80%93eval%E2%80%93print_loop).
 //!
 //! ```console
-//! $ reply python
-//! > print("hello")
-//! hello
-//! > print("world!")
-//! world!
+//! $ reply 'python | cowsay -f tux -n'
+//! > print("Hello reply📩!")
+//!  ________________
+//! < Hello reply📩! >
+//!  ----------------
+//!    \
+//!     \
+//!         .--.
+//!        |o_o |
+//!        |:_/ |
+//!       //   \ \
+//!      (|     | )
+//!     /'\_   _/`\
+//!     \___)=(___/
+//!
+//! >
 //! ```
 //!
 //! Read
