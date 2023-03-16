@@ -69,16 +69,19 @@ use duct_sh::sh_dangerous;
 use rustyline::{error::ReadlineError, Cmd, Config, Editor, KeyEvent};
 use thiserror::Error;
 
-// TODO: review from here
 /// reply makes any command-line application a (stateless) REPL.
 ///
-/// It builds a REPL that feeds user input to the standard input
-/// of backend application,
-/// and gets back output content from the standard output of it.
+/// This program sets up a REPL (Read-Evaluate-Print Loop)
+/// that takes user input
+/// and sends it to the backend application's standard input for evaluation.
+/// The output content is retrieved from the application's standard output
+/// and printed.
+/// This loop continues until the program is terminated.
 #[derive(Debug, Parser)]
 #[command(author, version, about)]
 #[command(propagate_version = true)]
 struct Cli {
+    // TODO: review from here
     /// Expression to run as the backend when user input is received.
     #[arg(value_parser = parse_expression)]
     expression: Expression,
