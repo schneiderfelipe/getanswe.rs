@@ -96,6 +96,7 @@ struct Cli {
 enum CliError {}
 
 /// Get an [`Expression`] by parsing.
+#[allow(clippy::unnecessary_wraps)]
 #[inline]
 fn parse_expression(input: &str) -> Result<Expression, CliError> {
     let expression = sh_dangerous(input);
