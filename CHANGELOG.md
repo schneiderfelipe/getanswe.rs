@@ -21,12 +21,6 @@ Do not change it, it is updated automatically.
 ### 🏗️ Miscellaneous Tasks
 
 
-`changelog`:
-
-
-- Link README.md from CHANGELOG.md ([d9649b5](https://github.com/schneiderfelipe/getanswe.rs/commit/d9649b5f93b963e4bb68555ebc4687712206fae3))
-
-
 ### 📝 Documentation
 
 
@@ -34,8 +28,15 @@ Do not change it, it is updated automatically.
 
 
 - Add other badges ([#18](https://github.com/schneiderfelipe/getanswe.rs/pull/18)) ([c62cfd2](https://github.com/schneiderfelipe/getanswe.rs/commit/c62cfd2048c082b7ef5246de9eeb88c2f0458dd8))
-- Update for workspace ([1275152](https://github.com/schneiderfelipe/getanswe.rs/commit/1275152a3fef453c18c7d16e0a3da5616ad7fcad))
-- Make it nicer ([e8f2a6a](https://github.com/schneiderfelipe/getanswe.rs/commit/e8f2a6ac9ee3fd558e9a30a9ed1dd19f440cc460))
+
+
+### 🚀 Continuous Integration
+
+
+`.github`:
+
+
+- Correct transition performed in #22 ([#23](https://github.com/schneiderfelipe/getanswe.rs/pull/23)) ([4c9ef4c](https://github.com/schneiderfelipe/getanswe.rs/commit/4c9ef4cfb91b4ed7e6b0241dcd029a95d176f84f))
 
 
 ## [answer-v0.0.1-beta.1] - 2023-03-15
