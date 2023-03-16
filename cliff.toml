@@ -20,8 +20,8 @@ body = """
 {% endif %}\
 {% if previous %}\
     {% if previous.commit_id %}
-        [{{ previous.commit_id | truncate(length=7, end="") }}](https://github.com/schneiderfelipe/answer/commit/{{ previous.commit_id }})...\
-            [{{ commit_id | truncate(length=7, end="") }}](https://github.com/schneiderfelipe/answer/commit/{{ commit_id }})
+        [{{ previous.commit_id | truncate(length=7, end="") }}](https://github.com/schneiderfelipe/getanswer/commit/{{ previous.commit_id }})...\
+            [{{ commit_id | truncate(length=7, end="") }}](https://github.com/schneiderfelipe/getanswer/commit/{{ commit_id }})
     {% endif %}\
 {% endif %}\
 {% for group, commits in commits | group_by(attribute="group") %}
@@ -29,7 +29,7 @@ body = """
     {% for scope, commits in commits | group_by(attribute="scope") %}
         `{{ scope }}`:
         {% for commit in commits %}
-            - {{ commit.message | upper_first }} ([{{ commit.id | truncate(length=7, end="") }}](https://github.com/schneiderfelipe/answer/commit/{{ commit.id }}))\
+            - {{ commit.message | upper_first }} ([{{ commit.id | truncate(length=7, end="") }}](https://github.com/schneiderfelipe/getanswer/commit/{{ commit.id }}))\
         {% endfor %}
     {% endfor %}
 {% endfor %}\n
@@ -50,8 +50,8 @@ filter_unconventional = true
 split_commits = false
 # regex for preprocessing the commit messages
 commit_preprocessors = [
-  { pattern = '\((\w+\s)?#([0-9]+)\)', replace = "([#${2}](https://github.com/schneiderfelipe/answer/pull/${2}))" },                                               # replace pull request numbers
-  { pattern = '([Rr]esolve[ds]?|[Cc]lose[ds]?|[Ff]ixe[ds]|[Ff]ix)\s+#([0-9]+)', replace = "${1} [#${2}](https://github.com/schneiderfelipe/answer/issues/${2})" },
+  { pattern = '\((\w+\s)?#([0-9]+)\)', replace = "([#${2}](https://github.com/schneiderfelipe/getanswer/pull/${2}))" },                                               # replace pull request numbers
+  { pattern = '([Rr]esolve[ds]?|[Cc]lose[ds]?|[Ff]ixe[ds]|[Ff]ix)\s+#([0-9]+)', replace = "${1} [#${2}](https://github.com/schneiderfelipe/getanswer/issues/${2})" },
 ]
 # regex for parsing and grouping commits
 commit_parsers = [
