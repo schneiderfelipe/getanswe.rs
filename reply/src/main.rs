@@ -29,7 +29,7 @@
 //! ```console
 //! # Option 1: cloning and installing from the repository
 //! $ git clone https://github.com/schneiderfelipe/getanswe.rs.git
-//! $ cd answer && cargo install reply --path=reply/
+//! $ cd getanswe.rs && cargo install reply --path=reply/
 //!
 //! # Option 2: installing directly from GitHub
 //! $ cargo install reply --git=https://github.com/schneiderfelipe/getanswe.rs

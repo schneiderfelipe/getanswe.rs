@@ -12,7 +12,7 @@ Read on to learn more about each application and how to use them.
 
 The `answer`
 ([`README.md`](https://github.com/schneiderfelipe/getanswe.rs/tree/main/answer#answer))
-command-line application allows users to ask and receive answers to questions
+command-line application allows users to ask and receive `answer`s to questions
 using the same
 [large language model](https://en.wikipedia.org/wiki/Large_language_model)
 that powers [**`ChatGPT`**](https://chat.openai.com/chat).
@@ -21,5 +21,6 @@ that powers [**`ChatGPT`**](https://chat.openai.com/chat).
 
 The `reply`
 ([`README.md`](https://github.com/schneiderfelipe/getanswe.rs/tree/main/reply#reply))
-command-line application allows users to turn any command-line application
-into a (stateless) [REPL](https://en.wikipedia.org/wiki/Read%E2%80%93eval%E2%80%93print_loop).
+command-line application allows users to `reply` to command-line applications
+by turning them into (stateless)
+[REPLs](https://en.wikipedia.org/wiki/Read%E2%80%93eval%E2%80%93print_loop).
