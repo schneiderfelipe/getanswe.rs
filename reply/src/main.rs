@@ -41,14 +41,12 @@
 
 #![forbid(unsafe_code)]
 
-use std::{
-    env,
-    fs::File,
-    io::{self, Read},
-};
+use std::{env, io};
 
 use clap::Parser;
-// use thiserror::Error;
+use duct::Expression;
+use duct_sh::sh_dangerous;
+use thiserror::Error;
 
 /// reply any question right from your terminal,
 /// using the same large language model that powers `ChatGPT`.
@@ -60,7 +58,7 @@ use clap::Parser;
 #[command(propagate_version = true)]
 struct Cli {
     /// Expression to run when user input is received.
-    #[arg(value_parser = sh_dangerous)]
+    #[arg(value_parser = parse_expression)]
     expression: Expression,
 
     /// Verbosity options.
@@ -71,8 +69,8 @@ struct Cli {
 /// An error that came from [`Cli`].
 #[derive(Debug, Error)]
 enum CliError {
-    #[error("could not perform a serialization or deserialization operation: {0}")]
-    Yaml(#[from] serde_yaml::Error),
+    // #[error("could not perform a serialization or deserialization operation: {0}")]
+    // Yaml(#[from] serde_yaml::Error),
     #[error("could not perform an input or output operation: {0}")]
     Io(#[from] io::Error),
 }
