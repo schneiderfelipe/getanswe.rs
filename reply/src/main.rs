@@ -93,12 +93,7 @@ struct Cli {
 
 /// An error that came from [`Cli`].
 #[derive(Debug, Error)]
-enum CliError {
-    // #[error("could not perform a serialization or deserialization operation: {0}")]
-    // Yaml(#[from] serde_yaml::Error),
-    #[error("could not perform an input or output operation: {0}")]
-    Io(#[from] io::Error),
-}
+enum CliError {}
 
 /// Get an [`Expression`] by parsing.
 #[inline]
