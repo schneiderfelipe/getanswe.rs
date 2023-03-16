@@ -27,7 +27,11 @@ body = """
 {% for group, commits in commits | group_by(attribute="group") %}
     ### {{ group | upper_first }}
     {% for scope, commits in commits | group_by(attribute="scope") %}
-        `{{ scope }}`:
+        {% if scope in ["answer", "reply"] %}
+            [`{{ scope }}`](https://github.com/schneiderfelipe/getanswer/tree/main/{{ scope }}#{{ scope }}) ([crates.io](https://crates.io/crates/{{ scope }})):
+        {% else %}
+            `{{ scope }}`:
+        {% endif %}
         {% for commit in commits %}
             - {{ commit.message | upper_first }} ([{{ commit.id | truncate(length=7, end="") }}](https://github.com/schneiderfelipe/getanswer/commit/{{ commit.id }}))\
         {% endfor %}

@@ -20,6 +20,14 @@ jobs:
       - uses: actions/checkout@v3
         with:
           fetch-depth: 0
+
+      - name: Update answer/README.md
+        working-directory: ./answer
+        run: cargo readme > README.md
+      - name: Update reply/README.md
+        working-directory: ./reply
+        run: cargo readme > README.md
+
       - uses: orhun/git-cliff-action@v2
         env:
           OUTPUT: CHANGELOG.md
