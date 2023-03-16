@@ -1,4 +1,4 @@
-# getanswer
+# getanswe.rs
 
 This Rust workspace repository
 contains command-line applications that
