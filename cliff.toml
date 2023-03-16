@@ -54,8 +54,9 @@ filter_unconventional = true
 split_commits = false
 # regex for preprocessing the commit messages
 commit_preprocessors = [
-  { pattern = '\((\w+\s)?#([0-9]+)\)', replace = "([#${2}](https://github.com/schneiderfelipe/getanswe.rs/pull/${2}))" },                                               # replace pull request numbers
-  { pattern = '([Rr]esolve[ds]?|[Cc]lose[ds]?|[Ff]ixe[ds]|[Ff]ix)\s+#([0-9]+)', replace = "${1} [#${2}](https://github.com/schneiderfelipe/getanswe.rs/issues/${2})" },
+  { pattern = '([Rr]esolve[ds]?|[Cc]lose[ds]?|[Ff]ixe[ds]|[Ff]ix)\s+#([0-9]+)', replace = "${1}[#${2}](https://github.com/schneiderfelipe/getanswe.rs/issues/${2})" }, # replace GitHub keywords
+  { pattern = '#([0-9]+)', replace = "[#${1}](https://github.com/schneiderfelipe/getanswe.rs/issues/${1})" },                                                          # replace issue numbers
+  { pattern = '\((\w+\s)?#([0-9]+)\)', replace = "(${1}[#${2}](https://github.com/schneiderfelipe/getanswe.rs/pull/${2}))" },                                          # replace pull request numbers
 ]
 # regex for parsing and grouping commits
 commit_parsers = [
