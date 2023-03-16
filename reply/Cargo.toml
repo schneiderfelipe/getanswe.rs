@@ -4,8 +4,8 @@ version = "0.0.0"
 edition = "2021"
 authors = ["Felipe S. S. Schneider <schneider.felipe.5@gmail.com>"]
 description = "reply makes any command-line application a (stateless) REPL"
-homepage = "https://github.com/schneiderfelipe/getanswer/tree/main/reply"
-repository = "https://github.com/schneiderfelipe/getanswer"
+homepage = "https://github.com/schneiderfelipe/getanswers/tree/main/reply"
+repository = "https://github.com/schneiderfelipe/getanswers"
 license = "MIT"
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html

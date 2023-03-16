@@ -13,41 +13,41 @@ Do not change it, it is updated automatically.
 
 `reply`:
 
-- Implement a minimum set of features ([#20](https://github.com/schneiderfelipe/getanswer/pull/20)) ([67e3830](https://github.com/schneiderfelipe/getanswer/commit/67e3830bfbe0e4d29f23c0dc817a75e6df0f68ff))
+- Implement a minimum set of features ([#20](https://github.com/schneiderfelipe/getanswers/pull/20)) ([67e3830](https://github.com/schneiderfelipe/getanswers/commit/67e3830bfbe0e4d29f23c0dc817a75e6df0f68ff))
 
 ### 📝 Documentation
 
 `README.md`:
 
-- Add other badges ([#18](https://github.com/schneiderfelipe/getanswer/pull/18)) ([c62cfd2](https://github.com/schneiderfelipe/getanswer/commit/c62cfd2048c082b7ef5246de9eeb88c2f0458dd8))
+- Add other badges ([#18](https://github.com/schneiderfelipe/getanswers/pull/18)) ([c62cfd2](https://github.com/schneiderfelipe/getanswers/commit/c62cfd2048c082b7ef5246de9eeb88c2f0458dd8))
 
 ## [answer-v0.0.1-beta.1] - 2023-03-15
 
-[f64d1a1](https://github.com/schneiderfelipe/getanswer/commit/f64d1a10038d64d9c96d30688164c285d5c773db)...[de9235a](https://github.com/schneiderfelipe/getanswer/commit/de9235a59e5e14a0e7d90e353acf31a27a87571a)
+[f64d1a1](https://github.com/schneiderfelipe/getanswers/commit/f64d1a10038d64d9c96d30688164c285d5c773db)...[de9235a](https://github.com/schneiderfelipe/getanswers/commit/de9235a59e5e14a0e7d90e353acf31a27a87571a)
 
 ### 🌟 Features
 
 `answer`:
 
-- Use async IO and multiple threads ([#13](https://github.com/schneiderfelipe/getanswer/pull/13)) ([2b86a30](https://github.com/schneiderfelipe/getanswer/commit/2b86a3037a14e1dc5c28ec2b7a41dc4b8548bd34))
-- Flush as tokens are received ([#14](https://github.com/schneiderfelipe/getanswer/pull/14)) ([0709b7b](https://github.com/schneiderfelipe/getanswer/commit/0709b7b3b49484ee303aa8624d63bccbaf396c80))
-- Improve ergonomics by using default features ([#16](https://github.com/schneiderfelipe/getanswer/pull/16)) ([f6f0146](https://github.com/schneiderfelipe/getanswer/commit/f6f01461ca005ddae16d0a250f67310cbb8e69ec))
+- Use async IO and multiple threads ([#13](https://github.com/schneiderfelipe/getanswers/pull/13)) ([2b86a30](https://github.com/schneiderfelipe/getanswers/commit/2b86a3037a14e1dc5c28ec2b7a41dc4b8548bd34))
+- Flush as tokens are received ([#14](https://github.com/schneiderfelipe/getanswers/pull/14)) ([0709b7b](https://github.com/schneiderfelipe/getanswers/commit/0709b7b3b49484ee303aa8624d63bccbaf396c80))
+- Improve ergonomics by using default features ([#16](https://github.com/schneiderfelipe/getanswers/pull/16)) ([f6f0146](https://github.com/schneiderfelipe/getanswers/commit/f6f01461ca005ddae16d0a250f67310cbb8e69ec))
 
 ### 🏗️ Miscellaneous Tasks
 
 `changelog`:
 
-- Improve CHANGELOG.md format ([#15](https://github.com/schneiderfelipe/getanswer/pull/15)) ([b848284](https://github.com/schneiderfelipe/getanswer/commit/b84828497bf84305001c03db9410b91ea0000b35))
+- Improve CHANGELOG.md format ([#15](https://github.com/schneiderfelipe/getanswers/pull/15)) ([b848284](https://github.com/schneiderfelipe/getanswers/commit/b84828497bf84305001c03db9410b91ea0000b35))
 
 `release`:
 
-- Post first release adjustments ([#10](https://github.com/schneiderfelipe/getanswer/pull/10)) ([6e2444f](https://github.com/schneiderfelipe/getanswer/commit/6e2444f159fca322c51d37634c576c66d0e1541e))
+- Post first release adjustments ([#10](https://github.com/schneiderfelipe/getanswers/pull/10)) ([6e2444f](https://github.com/schneiderfelipe/getanswers/commit/6e2444f159fca322c51d37634c576c66d0e1541e))
 
 ### 📝 Documentation
 
 `README.md`:
 
-- Add instructions ([#11](https://github.com/schneiderfelipe/getanswer/pull/11)) ([62143eb](https://github.com/schneiderfelipe/getanswer/commit/62143ebe1d5808a9dd6c7034b622b3dfdafeba3f))
+- Add instructions ([#11](https://github.com/schneiderfelipe/getanswers/pull/11)) ([62143eb](https://github.com/schneiderfelipe/getanswers/commit/62143ebe1d5808a9dd6c7034b622b3dfdafeba3f))
 
 ## [answer-v0.0.1-alpha.1] - 2023-03-14
 
@@ -55,27 +55,27 @@ Do not change it, it is updated automatically.
 
 `answer`:
 
-- Implement the minimal features ([#2](https://github.com/schneiderfelipe/getanswer/pull/2)) ([498ac76](https://github.com/schneiderfelipe/getanswer/commit/498ac76b41d6de3f73275f6926dc23a61d7088dc))
+- Implement the minimal features ([#2](https://github.com/schneiderfelipe/getanswers/pull/2)) ([498ac76](https://github.com/schneiderfelipe/getanswers/commit/498ac76b41d6de3f73275f6926dc23a61d7088dc))
 
 ### 🏗️ Miscellaneous Tasks
 
 `.github`:
 
-- Setup repository ([#5](https://github.com/schneiderfelipe/getanswer/pull/5)) ([90f77be](https://github.com/schneiderfelipe/getanswer/commit/90f77be7db21e2acae86e470f92fddbaae5987fb))
-- Create FUNDING.yml ([#3](https://github.com/schneiderfelipe/getanswer/pull/3)) ([7eab8ca](https://github.com/schneiderfelipe/getanswer/commit/7eab8ca4c5838126f9487c137abf86bbfbacbb72))
+- Setup repository ([#5](https://github.com/schneiderfelipe/getanswers/pull/5)) ([90f77be](https://github.com/schneiderfelipe/getanswers/commit/90f77be7db21e2acae86e470f92fddbaae5987fb))
+- Create FUNDING.yml ([#3](https://github.com/schneiderfelipe/getanswers/pull/3)) ([7eab8ca](https://github.com/schneiderfelipe/getanswers/commit/7eab8ca4c5838126f9487c137abf86bbfbacbb72))
 
 `README.md`:
 
-- Add CI badges ([#7](https://github.com/schneiderfelipe/getanswer/pull/7)) ([83e888c](https://github.com/schneiderfelipe/getanswer/commit/83e888c994e3e3e50bac48fb7eac86e2ddb3d93d))
+- Add CI badges ([#7](https://github.com/schneiderfelipe/getanswers/pull/7)) ([83e888c](https://github.com/schneiderfelipe/getanswers/commit/83e888c994e3e3e50bac48fb7eac86e2ddb3d93d))
 
 `cliff.toml`:
 
-- Add config ([#6](https://github.com/schneiderfelipe/getanswer/pull/6)) ([b91b883](https://github.com/schneiderfelipe/getanswer/commit/b91b8838e287945f21f2a15a045c3333cf0dcb54))
+- Add config ([#6](https://github.com/schneiderfelipe/getanswers/pull/6)) ([b91b883](https://github.com/schneiderfelipe/getanswers/commit/b91b8838e287945f21f2a15a045c3333cf0dcb54))
 
 ### 📝 Documentation
 
 `README.md`:
 
-- Update description ([#1](https://github.com/schneiderfelipe/getanswer/pull/1)) ([f97aede](https://github.com/schneiderfelipe/getanswer/commit/f97aede8268fb0b4839a8d0e6b8679a70915d95b))
+- Update description ([#1](https://github.com/schneiderfelipe/getanswers/pull/1)) ([f97aede](https://github.com/schneiderfelipe/getanswers/commit/f97aede8268fb0b4839a8d0e6b8679a70915d95b))
 
 <!-- generated by git-cliff -->

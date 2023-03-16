@@ -1,9 +1,9 @@
 # answer
 
 [![Crates.io version](https://img.shields.io/crates/v/answer)](https://crates.io/crates/answer)
-[![GitHub license](https://img.shields.io/github/license/schneiderfelipe/getanswer)](https://github.com/schneiderfelipe/getanswer/blob/main/LICENSE)
-[![Build CI](https://github.com/schneiderfelipe/getanswer/actions/workflows/ci.yml/badge.svg)](https://github.com/schneiderfelipe/getanswer/actions/workflows/ci.yml)
-[![Changelog CI](https://github.com/schneiderfelipe/getanswer/actions/workflows/changelog.yml/badge.svg)](https://github.com/schneiderfelipe/getanswer/blob/main/CHANGELOG.md#changelog)
+[![GitHub license](https://img.shields.io/github/license/schneiderfelipe/getanswers)](https://github.com/schneiderfelipe/getanswers/blob/main/LICENSE)
+[![Build CI](https://github.com/schneiderfelipe/getanswers/actions/workflows/ci.yml/badge.svg)](https://github.com/schneiderfelipe/getanswers/actions/workflows/ci.yml)
+[![Changelog CI](https://github.com/schneiderfelipe/getanswers/actions/workflows/changelog.yml/badge.svg)](https://github.com/schneiderfelipe/getanswers/blob/main/CHANGELOG.md#changelog)
 [![Libraries.io `SourceRank`](https://img.shields.io/librariesio/sourcerank/cargo/answer)](https://libraries.io/cargo/answer)
 
 > `answer` _any_ question right from your terminal,
@@ -35,11 +35,11 @@ Both options require [Rust and Cargo to be installed](https://rustup.rs/).
 
 ```console
 # Option 1: cloning and installing from the repository
-$ git clone https://github.com/schneiderfelipe/getanswer.git
+$ git clone https://github.com/schneiderfelipe/getanswers.git
 $ cd answer && cargo install answer --path=answer/
 
 # Option 2: installing directly from GitHub
-$ cargo install answer --git=https://github.com/schneiderfelipe/getanswer
+$ cargo install answer --git=https://github.com/schneiderfelipe/getanswers
 ```
 
 If you're looking to contribute to the project's development,
