@@ -29,11 +29,17 @@
 //! ```console
 //! # Option 1: cloning and installing from the repository
 //! $ git clone https://github.com/schneiderfelipe/answer.git
-//! $ cd reply && cargo install --path=reply/
+//! $ cd answer && cargo install reply --path=reply/
 //!
 //! # Option 2: installing directly from GitHub
-//! $ cargo install --git=https://github.com/schneiderfelipe/answer
+//! $ cargo install reply --git=https://github.com/schneiderfelipe/answer
 //! ```
+//!
+//! If you're looking to contribute to the project's development,
+//! the first option is the way to go (and thank you for your interest!).
+//! However,
+//! if you simply want to install the development version,
+//! the second option is likely the better choice.
 //!
 //! ## Unsafe code usage
 //!
