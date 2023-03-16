@@ -35,6 +35,12 @@
 //! $ cargo install reply --git=https://github.com/schneiderfelipe/answer
 //! ```
 //!
+//! If you're looking to contribute to the project's development,
+//! the first option is the way to go (and thank you for your interest!).
+//! However,
+//! if you simply want to install the development version,
+//! the second option is likely the better choice.
+//!
 //! ## Unsafe code usage
 //!
 //! This project forbids unsafe code usage.

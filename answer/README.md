@@ -42,6 +42,12 @@ $ cd answer && cargo install answer --path=answer/
 $ cargo install answer --git=https://github.com/schneiderfelipe/answer
 ```
 
+If you're looking to contribute to the project's development,
+the first option is the way to go (and thank you for your interest!).
+However,
+if you simply want to install the development version,
+the second option is likely the better choice.
+
 ### Environment Setup
 
 Before using `answer`,
