@@ -11,7 +11,7 @@ Do not change it, it is updated automatically.
 
 ### 🌟 Features
 
-`reply`:
+[`reply`📩](https://crates.io/crates/answer):
 
 - Implement a minimum set of features ([#20](https://github.com/schneiderfelipe/getanswe.rs/pull/20)) ([67e3830](https://github.com/schneiderfelipe/getanswe.rs/commit/67e3830bfbe0e4d29f23c0dc817a75e6df0f68ff))
 
@@ -27,7 +27,7 @@ Do not change it, it is updated automatically.
 
 ### 🌟 Features
 
-`answer`:
+[`answer`💭](https://crates.io/crates/answer):
 
 - Use async IO and multiple threads ([#13](https://github.com/schneiderfelipe/getanswe.rs/pull/13)) ([2b86a30](https://github.com/schneiderfelipe/getanswe.rs/commit/2b86a3037a14e1dc5c28ec2b7a41dc4b8548bd34))
 - Flush as tokens are received ([#14](https://github.com/schneiderfelipe/getanswe.rs/pull/14)) ([0709b7b](https://github.com/schneiderfelipe/getanswe.rs/commit/0709b7b3b49484ee303aa8624d63bccbaf396c80))
@@ -53,7 +53,7 @@ Do not change it, it is updated automatically.
 
 ### 🌟 Features
 
-`answer`:
+[`answer`💭](https://crates.io/crates/answer):
 
 - Implement the minimal features ([#2](https://github.com/schneiderfelipe/getanswe.rs/pull/2)) ([498ac76](https://github.com/schneiderfelipe/getanswe.rs/commit/498ac76b41d6de3f73275f6926dc23a61d7088dc))
 

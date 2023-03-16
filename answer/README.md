@@ -6,7 +6,7 @@
 [![Changelog CI](https://github.com/schneiderfelipe/getanswe.rs/actions/workflows/changelog.yml/badge.svg)](https://github.com/schneiderfelipe/getanswe.rs/blob/main/CHANGELOG.md#changelog)
 [![Libraries.io `SourceRank`](https://img.shields.io/librariesio/sourcerank/cargo/answer)](https://libraries.io/cargo/answer)
 
-> `answer` _any_ question right from your terminal,
+> [`answer`💭](https://crates.io/crates/answer) _any_ question right from your terminal,
 > using the same
 > [large language model](https://en.wikipedia.org/wiki/Large_language_model)
 > that powers
@@ -50,7 +50,7 @@ the second option is likely the better choice.
 
 ### Environment Setup
 
-Before using `answer`,
+Before using [`answer`💭](https://crates.io/crates/answer),
 you need to set up your environment to use
 [`OpenAI`'s chat completion API](https://platform.openai.com/docs/guides/chat/chat-completions-beta)
 (the same technology that powers `OpenAI`'s most advanced language model,

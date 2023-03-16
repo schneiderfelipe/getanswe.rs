@@ -7,7 +7,7 @@ in [`answer` context format](https://github.com/schneiderfelipe/getanswe.rs#usag
 
 This is a collection of prompt examples to be used with ChatGPT
 curated by [@f](https://github.com/f).
-They work particularly well with `answer`,
+They work particularly well with [`answer`💭](https://crates.io/crates/answer),
 with little to no adaptation required.
 
 For example,
