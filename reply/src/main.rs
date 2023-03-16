@@ -52,16 +52,16 @@ use duct_sh::sh_dangerous;
 use rustyline::{error::ReadlineError, Cmd, Config, Editor, KeyEvent};
 use thiserror::Error;
 
-/// reply any question right from your terminal,
-/// using the same large language model that powers `ChatGPT`.
+/// reply makes any command-line application a (stateless) REPL.
 ///
-/// It receives user message content from the standard input
-/// and returns assistant message content to the standard output.
+/// It builds a REPL that feeds user input to the standard input
+/// of backend application,
+/// and gets back output content from the standard output of it.
 #[derive(Debug, Parser)]
 #[command(author, version, about)]
 #[command(propagate_version = true)]
 struct Cli {
-    /// Expression to run when user input is received.
+    /// Expression to run as the backend when user input is received.
     #[arg(value_parser = parse_expression)]
     expression: Expression,
 
