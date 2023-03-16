@@ -9,6 +9,13 @@ Do not change it, it is updated automatically.
 
 ## [unreleased]
 
+### 🌟 Features
+
+`reply`:
+
+- Implement a minimum set of features ([#20](https://github.com/schneiderfelipe/answer/pull/20)) ([67e3830](https://github.com/schneiderfelipe/answer/commit/67e3830bfbe0e4d29f23c0dc817a75e6df0f68ff))
+
+
 ### 📝 Documentation
 
 `README.md`:
