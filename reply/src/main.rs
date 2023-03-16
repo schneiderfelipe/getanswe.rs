@@ -113,8 +113,7 @@ fn main() -> anyhow::Result<()> {
         .init();
     log::debug!("{cli:#?}");
 
-    let config = Config::builder().auto_add_history(true).build();
-    let mut editor = Editor::with_config(config)?;
+    let mut editor = Editor::with_config(Config::builder().auto_add_history(true).build())?;
     editor.set_helper(Some(()));
     editor.bind_sequence(KeyEvent::alt('\r'), Cmd::Newline);
 
@@ -123,23 +122,27 @@ fn main() -> anyhow::Result<()> {
     //     log::warn!("No previous history found.");
     // }
 
-    loop {
-        let line = loop {
-            let line = editor.readline("> ");
-            match line {
-                Ok(ref l) if !l.trim().is_empty() => break line,
-                err @ Err(_) => break err,
-                _ => {}
-            }
-        };
+    // Read until the line has at least one non-whitespace character.
+    let mut readline = || loop {
+        let line = editor.readline("> ");
         match line {
+            Ok(ref l) if !l.trim().is_empty() => break line,
+            err @ Err(_) => break err,
+            _ => {}
+        }
+    };
+
+    loop {
+        match readline() {
             Ok(line) => {
                 // editor.save_history(&self.history_path)?;
 
-                let mut reader = cli.expression.unchecked().stdin_bytes(line).reader()?;
-
                 let mut output = String::new();
-                reader.read_to_string(&mut output)?;
+                cli.expression
+                    .unchecked()
+                    .stdin_bytes(line)
+                    .reader()?
+                    .read_to_string(&mut output)?;
 
                 let mut stdout = io::stdout().lock();
                 write!(stdout, "{output}")?;
