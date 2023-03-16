@@ -34,7 +34,7 @@
 //! ```console
 //! # Option 1: cloning and installing from the repository
 //! $ git clone https://github.com/schneiderfelipe/answer.git
-//! $ cd answer && cargo install --path=answer/
+//! $ cd answer && cargo install answer --path=answer/
 //!
 //! # Option 2: installing directly from GitHub
 //! $ cargo install answer --git=https://github.com/schneiderfelipe/answer
