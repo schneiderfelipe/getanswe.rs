@@ -16,6 +16,7 @@ Do not change it, it is updated automatically.
 
 
 - Implement a minimum set of features ([#20](https://github.com/schneiderfelipe/getanswe.rs/issues/20)) ([67e3830](https://github.com/schneiderfelipe/getanswe.rs/commit/67e3830bfbe0e4d29f23c0dc817a75e6df0f68ff))
+- Implement a minimum set of features ([#26](https://github.com/schneiderfelipe/getanswe.rs/issues/26)) ([34abb85](https://github.com/schneiderfelipe/getanswe.rs/commit/34abb85dacf7248b718274d420798b4df396d756))
 
 
 ### 🏗️ Miscellaneous Tasks
