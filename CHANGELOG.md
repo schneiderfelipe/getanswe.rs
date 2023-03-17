@@ -7,6 +7,17 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 Do not change it, it is updated automatically.
 
+## [unreleased]
+
+### 🐛 Bug Fixes
+
+
+[`reply`](https://github.com/schneiderfelipe/getanswe.rs/tree/main/reply#reply) ([crates.io](https://crates.io/crates/reply)):
+
+
+- Add a new line to avoid the prompt to hide output ([#29](https://github.com/schneiderfelipe/getanswe.rs/issues/29)) ([c414e60](https://github.com/schneiderfelipe/getanswe.rs/commit/c414e6092c159869c195d8be1956443cc3d3a191))
+
+
 ## [reply-v0.0.1-beta.1] - 2023-03-17
 
 [de9235a](https://github.com/schneiderfelipe/getanswe.rs/commit/de9235a59e5e14a0e7d90e353acf31a27a87571a)...[9f85147](https://github.com/schneiderfelipe/getanswe.rs/commit/9f85147987d1e9d8fe730df661607744c43413be)
