@@ -194,7 +194,7 @@ fn main() -> anyhow::Result<()> {
                     .read_to_string(&mut output)?;
 
                 let mut stdout = io::stdout().lock();
-                write!(stdout, "{output}")?;
+                writeln!(stdout, "{output}")?;
                 stdout.flush()?;
             }
             Err(ReadlineError::Interrupted | ReadlineError::Eof) => break,
