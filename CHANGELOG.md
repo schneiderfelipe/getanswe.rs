@@ -7,7 +7,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 Do not change it, it is updated automatically.
 
-## [unreleased]
+## [reply-v0.0.1-beta.1] - 2023-03-17
+
+[de9235a](https://github.com/schneiderfelipe/getanswe.rs/commit/de9235a59e5e14a0e7d90e353acf31a27a87571a)...[9f85147](https://github.com/schneiderfelipe/getanswe.rs/commit/9f85147987d1e9d8fe730df661607744c43413be)
 
 ### 🌟 Features
 
