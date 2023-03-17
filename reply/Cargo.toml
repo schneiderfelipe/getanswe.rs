@@ -1,6 +1,6 @@
 [package]
 name = "reply"
-version = "0.0.0"
+version = "0.0.1-beta.1"
 edition = "2021"
 authors = ["Felipe S. S. Schneider <schneider.felipe.5@gmail.com>"]
 description = "reply makes any command-line application a (stateless) REPL"
