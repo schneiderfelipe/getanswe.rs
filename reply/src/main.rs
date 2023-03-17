@@ -7,11 +7,22 @@
 //! > [`reply`📩](https://crates.io/crates/reply) makes any command-line application a (stateless) [REPL](https://en.wikipedia.org/wiki/Read%E2%80%93eval%E2%80%93print_loop).
 //!
 //! ```console
-//! $ reply python
-//! > print("hello")
-//! hello
-//! > print("world!")
-//! world!
+//! $ reply 'python | cowsay -f tux -n'
+//! > print("Hello reply📩!")
+//!  ________________
+//! < Hello reply📩! >
+//!  ----------------
+//!    \
+//!     \
+//!         .--.
+//!        |o_o |
+//!        |:_/ |
+//!       //   \ \
+//!      (|     | )
+//!     /'\_   _/`\
+//!     \___)=(___/
+//!
+//! >
 //! ```
 //!
 //! Read
@@ -41,6 +52,55 @@
 //! if you simply want to install the development version,
 //! the second option is likely the better choice.
 //!
+//! ## Usage
+//!
+//! Using this tool is simple:
+//!
+//! ```console
+//! $ reply 'python'
+//! >
+//! ```
+//!
+//! Whatever you type in the prompt will be fed to the backend command (`python` in the example).
+//! The output of the command will be displayed in the terminal.
+//! For example:
+//!
+//! ```console
+//! $ reply 'python'
+//! > print("Hello " + "python")
+//! Hello python
+//! >
+//! ```
+//!
+//! However,
+//! there are a few things to keep in mind:
+//!
+//! - Only the standard output is captured.
+//!   If nothing is printed,
+//!   nothing will be shown.
+//! - The REPL is stateless,
+//!   which means that there's no memory being carried out.
+//!   If you define a variable,
+//!   for example,
+//!   it won't be available in the next prompt.
+//!
+//! Here's an example:
+//!
+//! ```console
+//! $ reply 'python'
+//! > a = 2              # no output
+//! > print(f"a = {a}")  # no memory
+//! Traceback (most recent call last):
+//!   File "<stdin>", line 1, in <module>
+//! NameError: name 'a' is not defined
+//! ```
+//!
+//! Therefore,
+//! it's the responsibility of the backend application to
+//!
+//! - Print out results to the standard output.
+//! - Implement memory (normally through a file).
+//!
 //! ## Unsafe code usage
 //!
 //! This project forbids unsafe code usage.
@@ -58,17 +118,20 @@ use duct_sh::sh_dangerous;
 use rustyline::{error::ReadlineError, Cmd, Config, Editor, KeyEvent};
 use thiserror::Error;
 
-// TODO: review from here
 /// reply makes any command-line application a (stateless) REPL.
 ///
-/// It builds a REPL that feeds user input to the standard input
-/// of backend application,
-/// and gets back output content from the standard output of it.
+/// This program sets up a REPL (Read-Evaluate-Print Loop)
+/// that takes user input
+/// and sends it to the backend application's standard input for evaluation.
+/// The output content is retrieved from the application's standard output
+/// and printed.
+/// This loop continues until the program is terminated.
 #[derive(Debug, Parser)]
 #[command(author, version, about)]
 #[command(propagate_version = true)]
 struct Cli {
-    /// Expression to run as the backend when user input is received.
+    /// The expression that will run as the backend application
+    /// when user input is received.
     #[arg(value_parser = parse_expression)]
     expression: Expression,
 
@@ -79,14 +142,10 @@ struct Cli {
 
 /// An error that came from [`Cli`].
 #[derive(Debug, Error)]
-enum CliError {
-    // #[error("could not perform a serialization or deserialization operation: {0}")]
-    // Yaml(#[from] serde_yaml::Error),
-    #[error("could not perform an input or output operation: {0}")]
-    Io(#[from] io::Error),
-}
+enum CliError {}
 
 /// Get an [`Expression`] by parsing.
+#[allow(clippy::unnecessary_wraps)]
 #[inline]
 fn parse_expression(input: &str) -> Result<Expression, CliError> {
     let expression = sh_dangerous(input);
@@ -103,8 +162,7 @@ fn main() -> anyhow::Result<()> {
         .init();
     log::debug!("{cli:#?}");
 
-    let config = Config::builder().auto_add_history(true).build();
-    let mut editor = Editor::with_config(config)?;
+    let mut editor = Editor::with_config(Config::builder().auto_add_history(true).build())?;
     editor.set_helper(Some(()));
     editor.bind_sequence(KeyEvent::alt('\r'), Cmd::Newline);
 
@@ -113,23 +171,27 @@ fn main() -> anyhow::Result<()> {
     //     log::warn!("No previous history found.");
     // }
 
-    loop {
-        let line = loop {
-            let line = editor.readline("> ");
-            match line {
-                Ok(ref l) if !l.trim().is_empty() => break line,
-                err @ Err(_) => break err,
-                _ => {}
-            }
-        };
+    // Read until the line has at least one non-whitespace character.
+    let mut readline = || loop {
+        let line = editor.readline("> ");
         match line {
+            Ok(ref l) if !l.trim().is_empty() => break line,
+            err @ Err(_) => break err,
+            _ => {}
+        }
+    };
+
+    loop {
+        match readline() {
             Ok(line) => {
                 // editor.save_history(&self.history_path)?;
 
-                let mut reader = cli.expression.unchecked().stdin_bytes(line).reader()?;
-
                 let mut output = String::new();
-                reader.read_to_string(&mut output)?;
+                cli.expression
+                    .unchecked()
+                    .stdin_bytes(line)
+                    .reader()?
+                    .read_to_string(&mut output)?;
 
                 let mut stdout = io::stdout().lock();
                 write!(stdout, "{output}")?;

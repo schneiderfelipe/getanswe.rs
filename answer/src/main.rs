@@ -259,8 +259,8 @@ impl Bot {
 /// answer any question right from your terminal,
 /// using the same large language model that powers `ChatGPT`.
 ///
-/// It receives user message content from the standard input
-/// and returns assistant message content to the standard output.
+/// The program takes in user messages from the standard input
+/// and outputs assistant messages to the standard output.
 #[derive(Debug, Parser)]
 #[command(author, version, about)]
 #[command(propagate_version = true)]
