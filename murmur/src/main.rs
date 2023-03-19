@@ -75,6 +75,14 @@ fn main() -> Result<(), anyhow::Error> {
     ))]
     let host = cpal::default_host();
 
+    println!(
+        "{:#?}",
+        host.input_devices()
+            .expect("failed to get input devices")
+            .map(|x| x.name())
+            .collect::<Vec<_>>()
+    );
+
     // Set up the input device and stream with the default input config.
     let device = if opt.device == "default" {
         host.default_input_device()
@@ -86,6 +94,13 @@ fn main() -> Result<(), anyhow::Error> {
 
     println!("Input device: {}", device.name()?);
 
+    println!(
+        "{:#?}",
+        device
+            .supported_input_configs()
+            .expect("failed to get supported input configs")
+            .collect::<Vec<_>>()
+    );
     let config = device
         .default_input_config()
         .expect("Failed to get default input config");
