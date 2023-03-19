@@ -53,11 +53,9 @@ fn main() -> Result<(), anyhow::Error> {
             .map(|config| (device, config))
     });
 
-    let (device, config) = if let Some((device, config)) = devices_configs.next() {
-        (device, config)
-    } else {
-        anyhow::bail!("Failed to get default input config");
-    };
+    let Some((device, config)) = devices_configs.next() else {
+         anyhow::bail!("Failed to get default input config");
+     };
 
     // The WAV file we're recording to.
     const PATH: &str = concat!(env!("CARGO_MANIFEST_DIR"), "/recorded.wav");
