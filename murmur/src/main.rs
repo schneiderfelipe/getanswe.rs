@@ -1,8 +1,10 @@
-//! murmur transcribes speech to text from the command-line through `OpenAI`'s Whisper API.
+//! murmur into your terminal and convert your speech to text using OpenAI's Whisper API.
 //!
 //! Records a WAV file (roughly 3 seconds long) using the default input device and config.
 //!
 //! The input data is recorded to "$`CARGO_MANIFEST_DIR/recorded.wav`".
+
+#![forbid(unsafe_code)]
 
 use std::{
     fs::File,
@@ -18,12 +20,21 @@ use cpal::{
 };
 use either::Either;
 
-#[derive(Parser, Debug)]
-#[command(version, about = "CPAL record_wav example", long_about = None)]
-struct Opt {}
+/// murmur into your terminal and convert your speech to text using OpenAI's Whisper API.
+///
+/// The program will continue recording until you signal "end of file" (Ctrl-D),
+/// and then it will output the transcribed text to the standard output.
+#[derive(Debug, Parser)]
+#[command(author, version, about)]
+#[command(propagate_version = true)]
+struct Cli {
+    /// Verbosity options.
+    #[clap(flatten)]
+    verbosity: clap_verbosity_flag::Verbosity,
+}
 
 fn main() -> Result<(), anyhow::Error> {
-    let _opt = Opt::parse();
+    let _opt = Cli::parse();
 
     let host = cpal::default_host();
 

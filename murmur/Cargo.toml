@@ -3,7 +3,7 @@ name = "murmur"
 version = "0.0.0"
 edition = "2021"
 authors = ["Felipe S. S. Schneider <schneider.felipe.5@gmail.com>"]
-description = "murmur transcribes speech to text from the command-line through OpenAI's Whisper API"
+description = "murmur into your terminal and convert your speech to text using OpenAI's Whisper API"
 homepage = "https://github.com/schneiderfelipe/getanswe.rs/tree/main/murmur"
 repository = "https://github.com/schneiderfelipe/getanswe.rs"
 license = "MIT"
@@ -13,6 +13,7 @@ license = "MIT"
 [dependencies]
 anyhow = { version = "1.0.69" }
 clap = { version = "4.1.8", features = ["derive"] }
+clap-verbosity-flag = { version = "2.0.0" }
 cpal = { version = "0.15.1" }
 either = "1.8.1"
 hound = { version = "3.5.0" }
