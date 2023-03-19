@@ -61,7 +61,7 @@ fn main() -> Result<(), anyhow::Error> {
 
     // The WAV file we're recording to.
     const PATH: &str = concat!(env!("CARGO_MANIFEST_DIR"), "/recorded.wav");
-    let spec = wav_spec_from_config(&config);
+    let spec = wav_spec_from_config(&config)?;
     let writer = hound::WavWriter::create(PATH, spec)?;
     let writer = Arc::new(Mutex::new(Some(writer)));
 
@@ -122,13 +122,14 @@ fn sample_format(format: cpal::SampleFormat) -> hound::SampleFormat {
     }
 }
 
-fn wav_spec_from_config(config: &cpal::SupportedStreamConfig) -> hound::WavSpec {
-    hound::WavSpec {
+fn wav_spec_from_config(config: &cpal::SupportedStreamConfig) -> anyhow::Result<hound::WavSpec> {
+    let wav_spec = hound::WavSpec {
         channels: config.channels() as _,
         sample_rate: config.sample_rate().0 as _,
-        bits_per_sample: (config.sample_format().sample_size() * 8) as _,
+        bits_per_sample: u16::try_from(config.sample_format().sample_size() * 8)?,
         sample_format: sample_format(config.sample_format()),
-    }
+    };
+    Ok(wav_spec)
 }
 
 type WavWriterHandle = Arc<Mutex<Option<hound::WavWriter<BufWriter<File>>>>>;
