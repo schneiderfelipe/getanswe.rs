@@ -1,4 +1,4 @@
-//! murmur into your terminal and convert your speech to text using OpenAI's Whisper API.
+//! murmur into your terminal and convert your speech to text using `OpenAI`'s Whisper API.
 //!
 //! Records a WAV file (roughly 3 seconds long) using the default input device and config.
 //!
@@ -20,7 +20,7 @@ use cpal::{
 };
 use either::Either;
 
-/// murmur into your terminal and convert your speech to text using OpenAI's Whisper API.
+/// murmur into your terminal and convert your speech to text using `OpenAI`'s Whisper API.
 ///
 /// The program will continue recording until you signal "end of file" (Ctrl-D),
 /// and then it will output the transcribed text to the standard output.
