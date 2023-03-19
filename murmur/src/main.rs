@@ -77,7 +77,12 @@ async fn main() -> anyhow::Result<()> {
      };
 
     // The WAV file we're recording to.
-    let path = tempfile::NamedTempFile::new()?.into_temp_path();
+    let path = tempfile::Builder::new()
+        .prefix("murmur")
+        .suffix(".wav")
+        .tempfile()?
+        .into_temp_path();
+    log::debug!("{path:#?}");
     let spec = wav_spec_from_config(&config)?;
     let writer = hound::WavWriter::create(&path, spec)?;
     let writer = Arc::new(Mutex::new(Some(writer)));
