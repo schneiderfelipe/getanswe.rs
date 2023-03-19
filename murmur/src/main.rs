@@ -3,6 +3,15 @@
 //! Records a WAV file (roughly 3 seconds long) using the default input device and config.
 //!
 //! The input data is recorded to "$`CARGO_MANIFEST_DIR/recorded.wav`".
+//!
+//! ## Installation
+//!
+//! Note: if you're using [ALSA](https://www.alsa-project.org/wiki/Main_Page),
+//! you may need to install the development files for `libasound2`,
+//!
+//! ```console
+//! $ sudo apt install libasound2-dev
+//! ```
 
 #![forbid(unsafe_code)]
 
@@ -73,8 +82,7 @@ fn main() -> Result<(), anyhow::Error> {
     let writer_2 = writer.clone();
 
     let err_fn = move |err| {
-        // TODO: log error
-        eprintln!("an error occurred on stream: {err}");
+        log::error!("an error occurred on stream: {err}");
     };
 
     let stream = match config.sample_format() {
