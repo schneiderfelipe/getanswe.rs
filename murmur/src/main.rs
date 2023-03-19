@@ -27,14 +27,6 @@ fn main() -> Result<(), anyhow::Error> {
 
     let host = cpal::default_host();
 
-    println!(
-        "{:#?}",
-        host.input_devices()
-            .expect("failed to get input devices")
-            .map(|x| x.name())
-            .collect::<Vec<_>>()
-    );
-
     // Set up the input devices and stream with the default input configs.
     let devices = host.input_devices()?;
     let devices = if let Some(device) = host.default_input_device() {
@@ -49,12 +41,12 @@ fn main() -> Result<(), anyhow::Error> {
             .ok()
             .map(|config| (device, config))
     });
-    let (device, config) = devices_configs
-        .next()
-        .expect("Failed to get default input config");
 
-    println!("Input device: {}", device.name()?);
-    println!("Default input config: {config:?}");
+    let (device, config) = if let Some((device, config)) = devices_configs.next() {
+        (device, config)
+    } else {
+        anyhow::bail!("Failed to get default input config");
+    };
 
     // The WAV file we're recording to.
     const PATH: &str = concat!(env!("CARGO_MANIFEST_DIR"), "/recorded.wav");
@@ -62,13 +54,11 @@ fn main() -> Result<(), anyhow::Error> {
     let writer = hound::WavWriter::create(PATH, spec)?;
     let writer = Arc::new(Mutex::new(Some(writer)));
 
-    // A flag to indicate that recording is in progress.
-    println!("Begin recording...");
-
     // Run the input stream on a separate thread.
     let writer_2 = writer.clone();
 
     let err_fn = move |err| {
+        // TODO: log error
         eprintln!("an error occurred on stream: {err}");
     };
 
@@ -110,7 +100,6 @@ fn main() -> Result<(), anyhow::Error> {
     std::thread::sleep(std::time::Duration::from_secs(3));
     drop(stream);
     writer.lock().unwrap().take().unwrap().finalize()?;
-    println!("Recording {PATH} complete!");
     Ok(())
 }
 
