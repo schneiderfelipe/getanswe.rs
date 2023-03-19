@@ -14,4 +14,5 @@ license = "MIT"
 anyhow = { version = "1.0.69" }
 clap = { version = "4.1.8", features = ["derive"] }
 cpal = { version = "0.15.1" }
+either = "1.8.1"
 hound = { version = "3.5.0" }

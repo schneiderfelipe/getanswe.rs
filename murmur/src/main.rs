@@ -7,6 +7,7 @@
 use std::{
     fs::File,
     io::BufWriter,
+    iter::once,
     sync::{Arc, Mutex},
 };
 
@@ -15,6 +16,7 @@ use cpal::{
     traits::{DeviceTrait, HostTrait, StreamTrait},
     FromSample, Sample,
 };
+use either::Either;
 
 #[derive(Parser, Debug)]
 #[command(version, about = "CPAL record_wav example", long_about = None)]
@@ -33,27 +35,25 @@ fn main() -> Result<(), anyhow::Error> {
             .collect::<Vec<_>>()
     );
 
-    // Set up the input device and stream with the default input config.
-    let device = if let Some(device) = host.default_input_device() {
-        device
+    // Set up the input devices and stream with the default input configs.
+    let devices = host.input_devices()?;
+    let devices = if let Some(device) = host.default_input_device() {
+        Either::Left(once(device).chain(devices))
     } else {
-        host.input_devices()?
-            .next()
-            .expect("failed to find input device")
+        Either::Right(devices)
     };
 
-    println!("Input device: {}", device.name()?);
-
-    println!(
-        "{:#?}",
+    let mut devices_configs = devices.filter_map(|device| {
         device
-            .supported_input_configs()
-            .expect("failed to get supported input configs")
-            .collect::<Vec<_>>()
-    );
-    let config = device
-        .default_input_config()
+            .default_input_config()
+            .ok()
+            .map(|config| (device, config))
+    });
+    let (device, config) = devices_configs
+        .next()
         .expect("Failed to get default input config");
+
+    println!("Input device: {}", device.name()?);
     println!("Default input config: {config:?}");
 
     // The WAV file we're recording to.
