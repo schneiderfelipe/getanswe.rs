@@ -16,12 +16,14 @@
 #![forbid(unsafe_code)]
 
 use std::{
+    env,
     fs::File,
     io::BufWriter,
     iter::once,
     sync::{Arc, Mutex},
 };
 
+use async_openai::{types::CreateTranscriptionRequestArgs, Client};
 use clap::Parser;
 use cpal::{
     traits::{DeviceTrait, HostTrait, StreamTrait},
@@ -42,7 +44,9 @@ struct Cli {
     verbosity: clap_verbosity_flag::Verbosity,
 }
 
-fn main() -> Result<(), anyhow::Error> {
+/// Our beloved main function.
+#[tokio::main]
+async fn main() -> anyhow::Result<()> {
     human_panic::setup_panic!();
 
     let cli = Cli::parse();
@@ -123,6 +127,19 @@ fn main() -> Result<(), anyhow::Error> {
     std::thread::sleep(std::time::Duration::from_secs(3));
     drop(stream);
     writer.lock().unwrap().take().unwrap().finalize()?;
+
+    let response = Client::default()
+        .with_api_key(env::var("OPENAI_API_KEY")?)
+        .audio()
+        .transcribe(
+            CreateTranscriptionRequestArgs::default()
+                .model("whisper-1")
+                .file(&path)
+                .build()?,
+        )
+        .await?;
+
+    println!("{response:#?}");
 
     path.close()?;
     Ok(())
