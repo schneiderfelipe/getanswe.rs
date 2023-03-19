@@ -58,9 +58,9 @@ fn main() -> Result<(), anyhow::Error> {
      };
 
     // The WAV file we're recording to.
-    const PATH: &str = concat!(env!("CARGO_MANIFEST_DIR"), "/recorded.wav");
+    let path = tempfile::NamedTempFile::new()?.into_temp_path();
     let spec = wav_spec_from_config(&config)?;
-    let writer = hound::WavWriter::create(PATH, spec)?;
+    let writer = hound::WavWriter::create(&path, spec)?;
     let writer = Arc::new(Mutex::new(Some(writer)));
 
     // Run the input stream on a separate thread.
@@ -109,6 +109,8 @@ fn main() -> Result<(), anyhow::Error> {
     std::thread::sleep(std::time::Duration::from_secs(3));
     drop(stream);
     writer.lock().unwrap().take().unwrap().finalize()?;
+
+    path.close()?;
     Ok(())
 }
 
