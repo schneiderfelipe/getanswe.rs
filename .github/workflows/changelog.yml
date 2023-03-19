@@ -29,6 +29,9 @@ jobs:
       - name: Update answer/README.md
         working-directory: ./answer
         run: cargo readme > README.md
+      - name: Update murmur/README.md
+        working-directory: ./murmur
+        run: cargo readme > README.md
       - name: Update reply/README.md
         working-directory: ./reply
         run: cargo readme > README.md
