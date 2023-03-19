@@ -2,6 +2,11 @@
 name = "murmur"
 version = "0.0.0"
 edition = "2021"
+authors = ["Felipe S. S. Schneider <schneider.felipe.5@gmail.com>"]
+description = "murmur transcribes speech to text from the command-line through OpenAI's Whisper API"
+homepage = "https://github.com/schneiderfelipe/getanswe.rs/tree/main/murmur"
+repository = "https://github.com/schneiderfelipe/getanswe.rs"
+license = "MIT"
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
