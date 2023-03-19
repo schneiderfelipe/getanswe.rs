@@ -34,7 +34,13 @@ struct Cli {
 }
 
 fn main() -> Result<(), anyhow::Error> {
-    let _opt = Cli::parse();
+    human_panic::setup_panic!();
+
+    let cli = Cli::parse();
+    pretty_env_logger::formatted_builder()
+        .filter_level(cli.verbosity.log_level_filter())
+        .init();
+    log::debug!("{cli:#?}");
 
     let host = cpal::default_host();
 

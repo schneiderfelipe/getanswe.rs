@@ -17,4 +17,7 @@ clap-verbosity-flag = { version = "2.0.0" }
 cpal = { version = "0.15.1" }
 either = { version = "1.8.1" }
 hound = { version = "3.5.0" }
+human-panic = { version = "1.1.1" }
+log = { version = "0.4.17" }
+pretty_env_logger = { version = "0.4.0" }
 tempfile = { version = "3.4.0" }
