@@ -7,6 +7,17 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 Do not change it, it is updated automatically.
 
+## [unreleased]
+
+### 🏗️ Miscellaneous Tasks
+
+
+`deps`:
+
+
+- Update async-openai requirement from 0.9.4 to 0.10.0 ([#32](https://github.com/schneiderfelipe/getanswe.rs/issues/32)) ([e054b8e](https://github.com/schneiderfelipe/getanswe.rs/commit/e054b8efee3d453e212a281ae8d83823a4646b7c))
+
+
 ## [reply-v0.0.1-beta.2] - 2023-03-18
 
 [9f85147](https://github.com/schneiderfelipe/getanswe.rs/commit/9f85147987d1e9d8fe730df661607744c43413be)...[477c153](https://github.com/schneiderfelipe/getanswe.rs/commit/477c1531bb83d78c866e48326d2c8d3af7ff6f1e)
