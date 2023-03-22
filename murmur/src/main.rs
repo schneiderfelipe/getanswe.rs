@@ -18,7 +18,7 @@
 use std::{
     env,
     fs::File,
-    io::BufWriter,
+    io::{self, BufWriter, Write},
     iter::once,
     sync::{mpsc::channel, Arc, Mutex},
 };
@@ -145,7 +145,8 @@ async fn main() -> anyhow::Result<()> {
         )
         .await?;
 
-    println!("{response:#?}");
+    log::debug!("{response:#?}");
+    writeln!(io::stdout().lock(), "{text}", text = response.text)?;
 
     path.close()?;
     Ok(())
