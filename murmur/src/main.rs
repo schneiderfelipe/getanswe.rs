@@ -1,6 +1,6 @@
 //! murmur into your terminal and convert your speech to text using `OpenAI`'s Whisper API.
 //!
-//! Records a WAV file (roughly 3 seconds long) using the default input device and config.
+//! Records a WAV file using the default input device and config until the user indicates end of input.
 //!
 //! The input data is recorded to "$`CARGO_MANIFEST_DIR/recorded.wav`".
 //!
@@ -20,7 +20,7 @@ use std::{
     fs::File,
     io::BufWriter,
     iter::once,
-    sync::{Arc, Mutex},
+    sync::{mpsc::channel, Arc, Mutex},
 };
 
 use async_openai::{types::CreateTranscriptionRequestArgs, Client};
@@ -127,9 +127,10 @@ async fn main() -> anyhow::Result<()> {
     };
 
     stream.play()?;
+    let (tx, rx) = channel();
+    ctrlc::set_handler(move || tx.send(()).expect("should send signal on channel"))?;
 
-    // Let recording go for roughly three seconds.
-    std::thread::sleep(std::time::Duration::from_secs(3));
+    rx.recv()?;
     drop(stream);
     writer.lock().unwrap().take().unwrap().finalize()?;
 
