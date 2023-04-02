@@ -1,6 +1,8 @@
-//! murmur into your terminal and convert your speech to text using `OpenAI`'s Whisper API.
+//! murmur into your terminal and convert your speech to text using `OpenAI`'s
+//! Whisper API.
 //!
-//! Records a WAV file using the default input device and config until the user indicates end of input.
+//! Records a WAV file using the default input device and config until the user
+//! indicates end of input.
 //!
 //! The input data is recorded to "$`CARGO_MANIFEST_DIR/recorded.wav`".
 //!
@@ -31,7 +33,8 @@ use cpal::{
 };
 use either::Either;
 
-/// murmur into your terminal and convert your speech to text using `OpenAI`'s Whisper API.
+/// murmur into your terminal and convert your speech to text using `OpenAI`'s
+/// Whisper API.
 ///
 /// The program will continue recording until you signal "end of file" (Ctrl-D),
 /// and then it will output the transcribed text to the standard output.
@@ -95,30 +98,38 @@ async fn main() -> anyhow::Result<()> {
     };
 
     let stream = match config.sample_format() {
-        cpal::SampleFormat::I8 => device.build_input_stream(
-            &config.into(),
-            move |data, _: &_| write_input_data::<i8, i8>(data, &writer_2),
-            err_fn,
-            None,
-        )?,
-        cpal::SampleFormat::I16 => device.build_input_stream(
-            &config.into(),
-            move |data, _: &_| write_input_data::<i16, i16>(data, &writer_2),
-            err_fn,
-            None,
-        )?,
-        cpal::SampleFormat::I32 => device.build_input_stream(
-            &config.into(),
-            move |data, _: &_| write_input_data::<i32, i32>(data, &writer_2),
-            err_fn,
-            None,
-        )?,
-        cpal::SampleFormat::F32 => device.build_input_stream(
-            &config.into(),
-            move |data, _: &_| write_input_data::<f32, f32>(data, &writer_2),
-            err_fn,
-            None,
-        )?,
+        cpal::SampleFormat::I8 => {
+            device.build_input_stream(
+                &config.into(),
+                move |data, _: &_| write_input_data::<i8, i8>(data, &writer_2),
+                err_fn,
+                None,
+            )?
+        }
+        cpal::SampleFormat::I16 => {
+            device.build_input_stream(
+                &config.into(),
+                move |data, _: &_| write_input_data::<i16, i16>(data, &writer_2),
+                err_fn,
+                None,
+            )?
+        }
+        cpal::SampleFormat::I32 => {
+            device.build_input_stream(
+                &config.into(),
+                move |data, _: &_| write_input_data::<i32, i32>(data, &writer_2),
+                err_fn,
+                None,
+            )?
+        }
+        cpal::SampleFormat::F32 => {
+            device.build_input_stream(
+                &config.into(),
+                move |data, _: &_| write_input_data::<f32, f32>(data, &writer_2),
+                err_fn,
+                None,
+            )?
+        }
         sample_format => {
             return Err(anyhow::Error::msg(format!(
                 "Unsupported sample format '{sample_format}'"
