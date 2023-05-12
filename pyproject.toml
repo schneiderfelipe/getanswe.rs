@@ -13,5 +13,5 @@ classifiers = [
 
 
 [tool.maturin]
+bindings = "bin"
 python-source = "python"
-features = ["pyo3/extension-module"]
