@@ -9,6 +9,15 @@ Do not change it, it is updated automatically.
 
 ## [unreleased]
 
+### 🌟 Features
+
+
+`murmur`:
+
+
+- Start an application for recording and transcribing audio ([#31](https://github.com/schneiderfelipe/getanswe.rs/issues/31)) ([b8836d9](https://github.com/schneiderfelipe/getanswe.rs/commit/b8836d922aeb1cbdf978898306f0abd8ad831754))
+
+
 ### 🏗️ Miscellaneous Tasks
 
 

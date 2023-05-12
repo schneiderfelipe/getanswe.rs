@@ -6,7 +6,8 @@
 [![Changelog CI](https://github.com/schneiderfelipe/getanswe.rs/actions/workflows/changelog.yml/badge.svg)](https://github.com/schneiderfelipe/getanswe.rs/blob/main/CHANGELOG.md#changelog)
 [![Libraries.io `SourceRank`](https://img.shields.io/librariesio/sourcerank/cargo/answer)](https://libraries.io/cargo/answer)
 
-> [`answer`💭](https://crates.io/crates/answer) _any_ question right from your terminal,
+> [`answer`💭](https://crates.io/crates/answer) _any_ question right from
+> your terminal,
 > using the same
 > [large language model](https://en.wikipedia.org/wiki/Large_language_model)
 > that powers
