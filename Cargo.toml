@@ -1,6 +1,0 @@
-[workspace]
-members = ["answer", "murmur", "reply"]
-
-[profile.release]
-lto = true
-strip = true
