@@ -106,15 +106,19 @@
 
 #![forbid(unsafe_code)]
 
-use std::{
-    env,
-    io::{self, Read, Write},
-};
+use std::env;
+use std::io::Read;
+use std::io::Write;
+use std::io::{self};
 
 use clap::Parser;
 use duct::Expression;
 use duct_sh::sh_dangerous;
-use rustyline::{error::ReadlineError, Cmd, Config, Editor, KeyEvent};
+use rustyline::error::ReadlineError;
+use rustyline::Cmd;
+use rustyline::Config;
+use rustyline::Editor;
+use rustyline::KeyEvent;
 use thiserror::Error;
 
 /// reply makes any command-line application a (stateless) REPL.

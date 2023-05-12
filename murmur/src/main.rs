@@ -17,20 +17,24 @@
 
 #![forbid(unsafe_code)]
 
-use std::{
-    env,
-    fs::File,
-    io::{self, BufWriter, Write},
-    iter::once,
-    sync::{mpsc::channel, Arc, Mutex},
-};
+use std::env;
+use std::fs::File;
+use std::io::BufWriter;
+use std::io::Write;
+use std::io::{self};
+use std::iter::once;
+use std::sync::mpsc::channel;
+use std::sync::Arc;
+use std::sync::Mutex;
 
-use async_openai::{types::CreateTranscriptionRequestArgs, Client};
+use async_openai::types::CreateTranscriptionRequestArgs;
+use async_openai::Client;
 use clap::Parser;
-use cpal::{
-    traits::{DeviceTrait, HostTrait, StreamTrait},
-    FromSample, Sample,
-};
+use cpal::traits::DeviceTrait;
+use cpal::traits::HostTrait;
+use cpal::traits::StreamTrait;
+use cpal::FromSample;
+use cpal::Sample;
 use either::Either;
 
 /// murmur into your terminal and convert your speech to text using `OpenAI`'s
