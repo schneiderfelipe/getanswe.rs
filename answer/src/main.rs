@@ -4,7 +4,8 @@
 //! [![Changelog CI](https://github.com/schneiderfelipe/getanswe.rs/actions/workflows/changelog.yml/badge.svg)](https://github.com/schneiderfelipe/getanswe.rs/blob/main/CHANGELOG.md#changelog)
 //! [![Libraries.io `SourceRank`](https://img.shields.io/librariesio/sourcerank/cargo/answer)](https://libraries.io/cargo/answer)
 //!
-//! > [`answer`💭](https://crates.io/crates/answer) _any_ question right from your terminal,
+//! > [`answer`💭](https://crates.io/crates/answer) _any_ question right from
+//! > your terminal,
 //! > using the same
 //! > [large language model](https://en.wikipedia.org/wiki/Large_language_model)
 //! > that powers
@@ -107,22 +108,24 @@
 
 #![forbid(unsafe_code)]
 
-use std::{
-    env,
-    fs::File,
-    io::{self, Read},
-};
+use std::env;
+use std::fs::File;
+use std::io::Read;
+use std::io::{self};
 
-use async_openai::{
-    error::OpenAIError,
-    types::{ChatCompletionRequestMessage, CreateChatCompletionRequestArgs, Role},
-    Client,
-};
+use async_openai::error::OpenAIError;
+use async_openai::types::ChatCompletionRequestMessage;
+use async_openai::types::CreateChatCompletionRequestArgs;
+use async_openai::types::Role;
+use async_openai::Client;
 use clap::Parser;
 use futures::StreamExt;
-use serde::{Deserialize, Serialize};
+use serde::Deserialize;
+use serde::Serialize;
 use thiserror::Error;
-use tokio::io::{AsyncReadExt, AsyncWrite, AsyncWriteExt};
+use tokio::io::AsyncReadExt;
+use tokio::io::AsyncWrite;
+use tokio::io::AsyncWriteExt;
 
 /// The context of a conversation.
 ///
@@ -211,7 +214,8 @@ enum BotError {
 }
 
 impl Bot {
-    /// Reply, in the context of a [`Conversation`], to the given [`AsyncWrite`]r.
+    /// Reply, in the context of a [`Conversation`], to the given
+    /// [`AsyncWrite`]r.
     #[inline]
     async fn reply_to_writer<W>(
         &self,

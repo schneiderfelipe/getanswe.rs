@@ -4,7 +4,9 @@
 //! [![Changelog CI](https://github.com/schneiderfelipe/getanswe.rs/actions/workflows/changelog.yml/badge.svg)](https://github.com/schneiderfelipe/getanswe.rs/blob/main/CHANGELOG.md#changelog)
 //! [![Libraries.io `SourceRank`](https://img.shields.io/librariesio/sourcerank/cargo/reply)](https://libraries.io/cargo/reply)
 //!
-//! > [`reply`📩](https://crates.io/crates/reply) makes any command-line application a (stateless) [REPL](https://en.wikipedia.org/wiki/Read%E2%80%93eval%E2%80%93print_loop).
+//! > [`reply`📩](https://crates.io/crates/reply) makes any command-line
+//! > application
+//! > a (stateless) [REPL](https://en.wikipedia.org/wiki/Read%E2%80%93eval%E2%80%93print_loop).
 //!
 //! ```console
 //! $ reply 'python | cowsay -f tux -n'
@@ -61,9 +63,9 @@
 //! >
 //! ```
 //!
-//! Whatever you type in the prompt will be fed to the backend command (`python` in the example).
-//! The output of the command will be displayed in the terminal.
-//! For example:
+//! Whatever you type in the prompt will be fed to the backend command (`python`
+//! in the example). The output of the command will be displayed in the
+//! terminal. For example:
 //!
 //! ```console
 //! $ reply 'python'
@@ -75,14 +77,11 @@
 //! However,
 //! there are a few things to keep in mind:
 //!
-//! - Only the standard output is captured.
-//!   If nothing is printed,
-//!   nothing will be shown.
-//! - The REPL is stateless,
-//!   which means that there's no memory being carried out.
-//!   If you define a variable,
-//!   for example,
-//!   it won't be available in the next prompt.
+//! - Only the standard output is captured. If nothing is printed, nothing will
+//!   be shown.
+//! - The REPL is stateless, which means that there's no memory being carried
+//!   out. If you define a variable, for example, it won't be available in the
+//!   next prompt.
 //!
 //! Here's an example:
 //!
@@ -107,15 +106,19 @@
 
 #![forbid(unsafe_code)]
 
-use std::{
-    env,
-    io::{self, Read, Write},
-};
+use std::env;
+use std::io::Read;
+use std::io::Write;
+use std::io::{self};
 
 use clap::Parser;
 use duct::Expression;
 use duct_sh::sh_dangerous;
-use rustyline::{error::ReadlineError, Cmd, Config, Editor, KeyEvent};
+use rustyline::error::ReadlineError;
+use rustyline::Cmd;
+use rustyline::Config;
+use rustyline::Editor;
+use rustyline::KeyEvent;
 use thiserror::Error;
 
 /// reply makes any command-line application a (stateless) REPL.
@@ -172,12 +175,14 @@ fn main() -> anyhow::Result<()> {
     // }
 
     // Read until the line has at least one non-whitespace character.
-    let mut readline = || loop {
-        let line = editor.readline("> ");
-        match line {
-            Ok(ref l) if !l.trim().is_empty() => break line,
-            err @ Err(_) => break err,
-            _ => {}
+    let mut readline = || {
+        loop {
+            let line = editor.readline("> ");
+            match line {
+                Ok(ref l) if !l.trim().is_empty() => break line,
+                err @ Err(_) => break err,
+                _ => {}
+            }
         }
     };
 

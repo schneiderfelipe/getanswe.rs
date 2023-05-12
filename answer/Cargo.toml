@@ -11,15 +11,15 @@ license = "MIT"
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
-anyhow = { version = "1.0.69" }
-async-openai = { version = "0.10.0" }
-clap = { version = "4.1.8" }
-clap-verbosity-flag = { version = "2.0.0" }
-futures = { version = "0.3.27" }
-human-panic = { version = "1.1.1" }
+anyhow = { version = "1.0.71" }
+async-openai = { version = "0.10.3" }
+clap = { version = "4.2.7" }
+clap-verbosity-flag = { version = "2.0.1" }
+futures = { version = "0.3.28" }
+human-panic = { version = "1.1.4" }
 log = { version = "0.4.17" }
 pretty_env_logger = { version = "0.4.0" }
-serde = { version = "1.0.156" }
-serde_yaml = { version = "0.9.19" }
-thiserror = { version = "1.0.39" }
-tokio = { version = "1.26.0", features = ["io-std", "rt-multi-thread"] }
+serde = { version = "1.0.163" }
+serde_yaml = { version = "0.9.21" }
+thiserror = { version = "1.0.40" }
+tokio = { version = "1.28.1", features = ["io-std", "rt-multi-thread"] }
