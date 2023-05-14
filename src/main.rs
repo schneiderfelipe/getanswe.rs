@@ -2,9 +2,9 @@
 
 use std::env;
 use std::fs::File;
+use std::io;
 use std::io::BufWriter;
 use std::io::Write;
-use std::io::{self};
 use std::iter::once;
 use std::sync::mpsc::channel;
 use std::sync::Arc;
@@ -31,6 +31,9 @@ use rustyline::KeyEvent;
 #[command(author, version, about)]
 #[command(propagate_version = true)]
 struct Cli {
+    #[arg(short, long)]
+    record: bool,
+
     #[clap(flatten)]
     verbosity: clap_verbosity_flag::Verbosity,
 }
@@ -45,14 +48,20 @@ async fn main() -> anyhow::Result<()> {
         .init();
     log::debug!("{cli:#?}");
 
-    if let Some(line) = get_line_text()? {
+    let line = if cli.record {
+        get_line_audio().await?
+    } else {
+        get_line_text().await?
+    };
+
+    if let Some(line) = line {
         process_line(&line)?;
     }
 
     Ok(())
 }
 
-fn get_line_text() -> anyhow::Result<Option<String>> {
+async fn get_line_text() -> anyhow::Result<Option<String>> {
     let mut editor = Editor::with_config(Config::builder().auto_add_history(true).build())?;
     editor.set_helper(Some(()));
     editor.bind_sequence(KeyEvent::alt('\r'), Cmd::Newline);
@@ -69,6 +78,10 @@ fn get_line_text() -> anyhow::Result<Option<String>> {
 }
 
 async fn get_line_audio() -> anyhow::Result<Option<String>> {
+    let mut stdout = io::stdout().lock();
+    write!(stdout, "🔴 (Ctrl-C to stop recording)")?;
+    stdout.flush()?;
+
     let host = cpal::default_host();
 
     let devices = host.input_devices()?;
@@ -167,8 +180,13 @@ async fn get_line_audio() -> anyhow::Result<Option<String>> {
     log::debug!("{response:#?}");
 
     path.close()?;
-    Ok(Some(response.text))
-    // TODO: send none if empty
+    writeln!(stdout)?;
+
+    if response.text.trim().is_empty() {
+        Ok(None)
+    } else {
+        Ok(Some(response.text))
+    }
 }
 
 #[inline]
