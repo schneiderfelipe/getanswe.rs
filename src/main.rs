@@ -4,13 +4,18 @@ use std::env;
 use std::fs::File;
 use std::io;
 use std::io::BufWriter;
+use std::io::Read;
 use std::io::Write;
 use std::iter::once;
 use std::sync::mpsc::channel;
 use std::sync::Arc;
 use std::sync::Mutex;
 
+use async_openai::error::OpenAIError;
+use async_openai::types::ChatCompletionRequestMessage;
+use async_openai::types::CreateChatCompletionRequestArgs;
 use async_openai::types::CreateTranscriptionRequestArgs;
+use async_openai::types::Role;
 use async_openai::Client;
 use clap::Parser;
 use cpal::traits::DeviceTrait;
@@ -19,6 +24,7 @@ use cpal::traits::StreamTrait;
 use cpal::FromSample;
 use cpal::Sample;
 use either::Either;
+use futures::StreamExt;
 use rustyline::error::ReadlineError;
 use rustyline::history::History;
 use rustyline::Cmd;
@@ -26,16 +32,32 @@ use rustyline::Config;
 use rustyline::Editor;
 use rustyline::Helper;
 use rustyline::KeyEvent;
+use serde::Deserialize;
+use serde::Serialize;
+use thiserror::Error;
+use tokio::io::AsyncWrite;
+use tokio::io::AsyncWriteExt;
 
 #[derive(Debug, Parser)]
 #[command(author, version, about)]
 #[command(propagate_version = true)]
 struct Cli {
+    #[arg(value_parser = parse_conversation)]
+    conversation: Option<Conversation>,
+
     #[arg(short, long)]
     record: bool,
 
     #[clap(flatten)]
     verbosity: clap_verbosity_flag::Verbosity,
+}
+
+#[derive(Debug, Error)]
+enum CliError {
+    #[error("could not perform a serialization or deserialization operation: {0}")]
+    Yaml(#[from] serde_yaml::Error),
+    #[error("could not perform an input or output operation: {0}")]
+    Io(#[from] io::Error),
 }
 
 #[tokio::main]
@@ -55,10 +77,140 @@ async fn main() -> anyhow::Result<()> {
     };
 
     if let Some(line) = line {
-        process_line(&line)?;
+        let conversation = cli.conversation.unwrap_or_default();
+        process_line(conversation, &line).await?;
     }
 
     Ok(())
+}
+
+#[derive(Clone, Debug, Default, Serialize, Deserialize)]
+struct Conversation {
+    #[serde(default, skip_serializing_if = "Vec::is_empty")]
+    messages: Vec<Message>,
+}
+
+impl Conversation {
+    #[inline]
+    fn push(&mut self, message: Message) {
+        self.messages.push(message);
+    }
+
+    #[inline]
+    fn from_reader<R>(reader: R) -> Result<Self, serde_yaml::Error>
+    where
+        R: Read,
+    {
+        serde_yaml::from_reader(reader)
+    }
+}
+
+#[derive(Clone, Debug, Default, Serialize, Deserialize)]
+struct Message {
+    #[serde(default, skip_serializing_if = "is_user")]
+    role: Role,
+    #[serde(default, skip_serializing_if = "String::is_empty")]
+    content: String,
+    #[serde(default, skip_serializing_if = "Option::is_none")]
+    name: Option<String>,
+}
+
+impl Message {
+    #[inline]
+    fn from_user<C>(content: C) -> Self
+    where
+        C: Into<String>,
+    {
+        Self {
+            role: Role::User,
+            content: content.into(),
+            name: None,
+        }
+    }
+}
+
+impl From<Message> for ChatCompletionRequestMessage {
+    #[inline]
+    fn from(message: Message) -> Self {
+        Self {
+            role: message.role,
+            content: message.content,
+            name: message.name,
+        }
+    }
+}
+
+#[derive(Debug, Default, Serialize, Deserialize)]
+struct Bot {}
+
+#[derive(Debug, Error)]
+enum BotError {
+    #[error("could not obtain environment variable: {0}")]
+    Var(#[from] env::VarError),
+    #[error("could not exchange data with OpenAI: {0}")]
+    OpenAI(#[from] OpenAIError),
+    #[error("could not perform an input or output operation: {0}")]
+    Io(#[from] io::Error),
+}
+
+impl Bot {
+    #[inline]
+    async fn reply_to_writer<W>(
+        &self,
+        conversation: &Conversation,
+        mut writer: W,
+    ) -> Result<(), BotError>
+    where
+        W: AsyncWrite + Send + Unpin,
+    {
+        let mut stream = Client::default()
+            .with_api_key(env::var("OPENAI_API_KEY")?)
+            .chat()
+            .create_stream({
+                CreateChatCompletionRequestArgs::default()
+                    .model("gpt-3.5-turbo")
+                    .temperature(0.0)
+                    .messages(
+                        conversation
+                            .messages
+                            .iter()
+                            .cloned()
+                            .map(Into::into)
+                            .collect::<Vec<_>>(),
+                    )
+                    .build()?
+            })
+            .await?;
+
+        while let Some(response) = stream.next().await {
+            for content in response?
+                .choices
+                .into_iter()
+                .filter_map(|choice| choice.delta.content)
+            {
+                writer.write_all(content.as_bytes()).await?;
+            }
+
+            writer.flush().await?;
+        }
+
+        Ok(())
+    }
+}
+
+#[inline]
+fn parse_conversation(path: &str) -> Result<Conversation, CliError> {
+    let file = File::open(path)?;
+    let conversation = Conversation::from_reader(file)?;
+    Ok(conversation)
+}
+
+#[inline]
+const fn is_user(role: &Role) -> bool {
+    match role {
+        Role::User => true,
+        Role::System | Role::Assistant => false,
+    }
 }
 
 async fn get_line_text() -> anyhow::Result<Option<String>> {
@@ -202,10 +354,12 @@ fn read_line<H: Helper, I: History>(editor: &mut Editor<H, I>) -> rustyline::Res
 }
 
 #[inline]
-fn process_line(line: &str) -> io::Result<()> {
-    let mut stdout = io::stdout().lock();
-    writeln!(stdout, "GOT: {line}")?;
-    stdout.flush()?;
+async fn process_line(mut conversation: Conversation, line: &str) -> anyhow::Result<()> {
+    conversation.push(Message::from_user(line));
+
+    Bot::default()
+        .reply_to_writer(&conversation, tokio::io::stdout())
+        .await?;
     Ok(())
 }
 
