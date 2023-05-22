@@ -18,6 +18,6 @@ duct = { version = "0.13.6" }
 duct_sh = { version = "0.13.6" }
 human-panic = { version = "1.1.4" }
 log = { version = "0.4.17" }
-pretty_env_logger = { version = "0.4.0" }
+pretty_env_logger = { version = "0.5.0" }
 rustyline = { version = "11.0.0" }
 thiserror = { version = "1.0.40" }
