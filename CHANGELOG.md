@@ -26,6 +26,7 @@ Do not change it, it is updated automatically.
 
 - Update async-openai requirement from 0.9.4 to 0.10.0 ([#32](https://github.com/schneiderfelipe/getanswe.rs/issues/32)) ([e054b8e](https://github.com/schneiderfelipe/getanswe.rs/commit/e054b8efee3d453e212a281ae8d83823a4646b7c))
 - Update pretty_env_logger requirement from 0.4.0 to 0.5.0 ([#34](https://github.com/schneiderfelipe/getanswe.rs/issues/34)) ([e831928](https://github.com/schneiderfelipe/getanswe.rs/commit/e831928f466f00aae1c58955c6eb012397f07fd9))
+- Update async-openai requirement from 0.10.3 to 0.11.0 ([#35](https://github.com/schneiderfelipe/getanswe.rs/issues/35)) ([7e3a760](https://github.com/schneiderfelipe/getanswe.rs/commit/7e3a760de045793f7dae03adff73d8d9c25bf5fd))
 
 
 ## [reply-v0.0.1-beta.2] - 2023-03-18
