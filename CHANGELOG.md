@@ -29,6 +29,7 @@ Do not change it, it is updated automatically.
 - Update async-openai requirement from 0.10.3 to 0.11.0 ([#35](https://github.com/schneiderfelipe/getanswe.rs/issues/35)) ([7e3a760](https://github.com/schneiderfelipe/getanswe.rs/commit/7e3a760de045793f7dae03adff73d8d9c25bf5fd))
 - Update rustyline requirement from 11.0.0 to 12.0.0 ([#37](https://github.com/schneiderfelipe/getanswe.rs/issues/37)) ([020d832](https://github.com/schneiderfelipe/getanswe.rs/commit/020d832aac45591070662c1a14e74c2c1d4840ef))
 - Update async-openai requirement from 0.11.0 to 0.12.0 ([#36](https://github.com/schneiderfelipe/getanswe.rs/issues/36)) ([24a02a2](https://github.com/schneiderfelipe/getanswe.rs/commit/24a02a2f456a461bbb0ec48aca091f2e33384f05))
+- Update async-openai requirement from 0.12.0 to 0.13.0 ([#38](https://github.com/schneiderfelipe/getanswe.rs/issues/38)) ([35947d9](https://github.com/schneiderfelipe/getanswe.rs/commit/35947d905940e2ed97fbf1929b82cde2bf3d4f18))
 
 
 ## [reply-v0.0.1-beta.2] - 2023-03-18
