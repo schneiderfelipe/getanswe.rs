@@ -36,7 +36,7 @@ jobs:
         working-directory: ./reply
         run: cargo readme > README.md
 
-      - uses: orhun/git-cliff-action@v2
+      - uses: orhun/git-cliff-action@v3
         env:
           OUTPUT: CHANGELOG.md
       - uses: stefanzweifel/git-auto-commit-action@v5
