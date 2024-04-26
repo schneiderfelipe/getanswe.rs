@@ -16,7 +16,7 @@ async-openai = { version = "0.20.0" }
 clap = { version = "4.2.7" }
 clap-verbosity-flag = { version = "2.0.1" }
 futures = { version = "0.3.28" }
-human-panic = { version = "1.1.4" }
+human-panic = { version = "2.0.0" }
 log = { version = "0.4.17" }
 pretty_env_logger = { version = "0.5.0" }
 serde = { version = "1.0.163" }
