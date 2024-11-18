@@ -21,5 +21,5 @@ log = { version = "0.4.17" }
 pretty_env_logger = { version = "0.5.0" }
 serde = { version = "1.0.163" }
 serde_yaml = { version = "0.9.21" }
-thiserror = { version = "1.0.40" }
+thiserror = { version = "2.0.3" }
 tokio = { version = "1.28.1", features = ["io-std", "rt-multi-thread"] }
