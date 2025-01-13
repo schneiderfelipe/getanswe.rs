@@ -12,7 +12,7 @@ license = "MIT"
 
 [dependencies]
 anyhow = { version = "1.0.71" }
-async-openai = { version = "0.26.0" }
+async-openai = { version = "0.27.1" }
 clap = { version = "4.2.7", features = ["derive"] }
 clap-verbosity-flag = { version = "3.0.0" }
 cpal = { version = "0.15.2" }
